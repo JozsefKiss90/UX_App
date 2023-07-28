@@ -1,0 +1,24 @@
+.svgContainer {
+    position: relative;
+    display: inline-block;
+}
+  
+.centeredButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgb(63, 158, 240);
+    font-size: 2rem;
+    padding: 20px 30px;
+    border: 1px solid rgb(63, 158, 240);
+    border-radius: 30px;
+    cursor: pointer;
+    width: 200px;  /* adjust this value as needed */
+    height: 60px;  /* adjust this value as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
