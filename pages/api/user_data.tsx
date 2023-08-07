@@ -1,7 +1,7 @@
 import connectToDb from '../../database/database'
 import UserData from '../../models/user_data.model'
 import { NextApiRequest, NextApiResponse } from 'next';
-
+ 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     
     connectToDb()
@@ -18,10 +18,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     else if(req.method === 'POST') {
         if(!req.body) return res.status(404).json({error:'form data is missing'})
-        console.log("req body: " + {...req.body})
-        const { task, coordinate_x, coordinate_y , response_time, email} = req.body
+        console.log("req body: " + JSON.stringify(req.body))
+        const { task, coordinates, email} = req.body
  
-        const userData = new UserData({task, coordinate_x, coordinate_y , response_time, email});
+        const userData = new UserData({task, coordinates, email});
         userData.save()
         .then(data => {
             res.status(201).json({status:true, user:data})

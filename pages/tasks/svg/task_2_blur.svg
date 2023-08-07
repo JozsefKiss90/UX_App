@@ -6,20 +6,20 @@
   </defs>
 <rect width="1280" height="720" fill="white"/>
 <g clip-path="url(#clip0_30_159)">
-<rect data-blur="true" x="89" y="201" width="1264.44" height="431.919" fill="url(#pattern0)" filter="url(#blurMe)" stroke="red"/>
+<rect data-blur="true" x="89" y="201" width="1264.44" height="431.919" fill="url(#pattern0)" filter="url(#blurMe)"/>
 <rect x="749.275" y="283.861" width="593.725" height="82.8606" fill="url(#pattern1)"/>
 <rect x="1144.66" y="283.861" width="208.783" height="82.8606" fill="url(#pattern2)"/>
 <rect x="532.01" y="292.342" width="54.8054" height="76.9886" fill="url(#pattern3)"/>
-<rect data-interactive="true" data-blur="true" x="580.943" y="293.646" width="87.4277" height="59.3725" fill="url(#pattern4)" filter="url(#blurMe)" stroke="red"/>
-<rect data-interactive="true" data-blur="true" x="668.371" y="293.646" width="89.385" height="59.3725" fill="url(#pattern5)" filter="url(#blurMe)" stroke="red"/>
-<rect data-interactive="true" data-blur="true" x="630.529" y="309.305" width="25.4454" height="28.7076" fill="url(#pattern6)"  filter="url(#blurMe)" stroke="red"/>
-<rect data-interactive="true" data-blur="true" width="9.78668" height="9.13424" transform="matrix(1 0 0 -1 636.4 334.75)" fill="url(#pattern7)"  filter="url(#blurMe)" stroke="red"/>
-<rect data-interactive="true" data-blur="true" x="655.975" y="334.75" width="9.78668" height="9.13424" transform="rotate(180 655.975 334.75)" fill="url(#pattern8)" filter="url(#blurMe)" stroke="red" />
-<rect data-interactive="true" data-blur="true" x="655.975" y="314.525" width="12.3965" height="17.616" fill="#EDF2FA" filter="url(#blurMe)" stroke="red"/>
-<rect data-interactive="true" data-blur="true" x="668.371" y="314.525" width="35.2321" height="17.616" fill="#EDF2FA" filter="url(#blurMe)" stroke="red"/>
-<rect data-interactive="true" data-blur="true" x="683.377" y="304.086" width="10.4391" height="38.4943" fill="url(#pattern9)" filter="url(#blurMe)" stroke="red"/>
-<rect  data-interactive="true" data-blur="true" x="627.92" y="311.264" width="30.6649" height="24.1405" fill="#EDF2FA" filter="url(#blurMe)" stroke="red"/>
-<rect  data-interactive="true" data-blur="true" x="640.316" y="314.525" width="15.6587" height="15.6587" fill="url(#pattern10)" filter="url(#blurMe)" stroke="red"/>
+<rect data-interactive="true" data-blur="true" x="580.943" y="293.646" width="87.4277" height="59.3725" fill="url(#pattern4)" filter="url(#blurMe)"/>
+<rect data-interactive="true" data-blur="true" x="668.371" y="293.646" width="89.385" height="59.3725" fill="url(#pattern5)" filter="url(#blurMe)"/>
+<rect data-interactive="true" data-blur="true" x="630.529" y="309.305" width="25.4454" height="28.7076" fill="url(#pattern6)"  filter="url(#blurMe)"/>
+<rect data-interactive="true" data-blur="true" width="9.78668" height="9.13424" transform="matrix(1 0 0 -1 636.4 334.75)" fill="url(#pattern7)"  filter="url(#blurMe)"/>
+<rect data-interactive="true" data-blur="true" x="655.975" y="334.75" width="9.78668" height="9.13424" transform="rotate(180 655.975 334.75)" fill="url(#pattern8)" filter="url(#blurMe)" />
+<rect data-interactive="true" data-blur="true" x="655.975" y="314.525" width="12.3965" height="17.616" fill="#EDF2FA" filter="url(#blurMe)"/>
+<rect data-interactive="true" data-blur="true" x="668.371" y="314.525" width="35.2321" height="17.616" fill="#EDF2FA" filter="url(#blurMe)"/>
+<rect data-interactive="true" data-blur="true" x="683.377" y="304.086" width="10.4391" height="38.4943" fill="url(#pattern9)" filter="url(#blurMe)"/>
+<rect  data-interactive="true" data-blur="true" x="627.92" y="311.264" width="30.6649" height="24.1405" fill="#EDF2FA" filter="url(#blurMe)"/>
+<rect  data-interactive="true" data-blur="true" x="640.316" y="314.525" width="15.6587" height="15.6587" fill="url(#pattern10)" filter="url(#blurMe)"/>
 <line x1="669.024" y1="311.916" x2="669.024" y2="335.404" stroke="#C7C7C7" stroke-width="1.30489"/>
 <rect x="438.059" y="587.9" width="825.343" height="36.5369" fill="#F9FBFD" fill-opacity="0.8"/>
 <rect x="167.945" y="212.092" width="1082.41" height="71.769" fill="#F9FBFD" fill-opacity="0.8"/>

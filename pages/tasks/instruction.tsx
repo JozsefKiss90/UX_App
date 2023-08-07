@@ -15,9 +15,9 @@ const Instruction = ({ progress, setProgress } : any) => {
     <div>
       {progress == 0 ?
         <>
-          <h3>
+          <h2>
             This is a super-short experiment, which takes 50-120 seconds of your precious time.
-          </h3>
+          </h2>
           <button className={styles.centeredButton} onClick={(e) => {
             handleProgress(e);
           }}>
@@ -26,9 +26,9 @@ const Instruction = ({ progress, setProgress } : any) => {
         </>
         : progress == 1 ? 
         <>
-          <h3>
+          <h2>
             Our goal is to make Google Sheets better.
-          </h3>
+          </h2>
           <button className={styles.centeredButton} onClick={(e) => {
             handleProgress(e);
           }}>
@@ -37,9 +37,9 @@ const Instruction = ({ progress, setProgress } : any) => {
         </>
         : progress == 2 ? 
         <>
-          <h3>
+          <h2>
             We will simulate very basics tasks in Google Sheets
-          </h3>
+          </h2>
           <button className={styles.centeredButton} onClick={(e) => {
             handleProgress(e);
           }}>
@@ -48,9 +48,9 @@ const Instruction = ({ progress, setProgress } : any) => {
         </>
         : progress == 3 ? 
         <>
-          <h3>
+          <h2>
             Answer as fast as you can
-          </h3>
+          </h2>
           <button className={styles.centeredButton} onClick={(e) => {
             handleProgress(e);
           }}>

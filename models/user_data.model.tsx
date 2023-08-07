@@ -1,10 +1,14 @@
 import mongoose, { Document, Model, Schema } from 'mongoose';
 
-interface User_data extends Document {
-  task : string,
-  coordinate_x : number,
-  coordinate_y : number, 
+interface Coordinates {
+  cx: number;
+  cy: number;
   response_time: number;
+}
+
+interface User_data extends Document {
+  task: string;
+  coordinates: { [key: string]: Coordinates };
   email: string;
 }
 
@@ -16,25 +20,17 @@ try {
     'response_schema',
     new Schema<User_data>({
       task: {
-        type : String,
-        required: true,
-      },  
-      coordinate_x: {
-        type : Number,
+        type: String,
         required: true,
       },
-      coordinate_y: {
-        type : Number,
-        required: true,
-      },
-      response_time: {
-        type: Number,
+      coordinates: {
+        type: Schema.Types.Mixed,
         required: true,
       },
       email: {
         type: String,
         required: true,
-      }
+      },
     }, { collection: 'response_schema' })
   );
 }

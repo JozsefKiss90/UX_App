@@ -1,0 +1,269 @@
+.lickert5.lickert5 {
+    left: 8px;
+    top: 17px;
+  }
+  .lickert4.lickert4 {
+    left: 64px;
+    top: 17px;
+  }
+  .lickert3.lickert3 {
+    left: 120px;
+    top: 17px;
+  }
+  .lickert2.lickert2 {
+    left: 176px;
+    top: 17px;
+  }
+  .lickert1.lickert1 {
+    left: 232px;
+    top: 17px;
+  }
+  .root {
+    position: relative;
+    width: 1280px;
+    height: 720px;
+    align-items: flex-start;
+    background-color: #f9fbfd;
+    overflow: hidden;
+  }
+  .pleaseIndicateYourLevelOfExper {
+    color: #000;
+    font-size: 36.9866px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 156px;
+    top: 124px;
+    width: 909px;
+    height: min-content;
+    flex-direction: column;
+  }
+  .buttonDisabled {
+    position: absolute;
+    left: 922px;
+    top: 502px;
+    width: 205px;
+    height: 104px;
+    align-items: flex-start;
+    outline: solid 5px #c7c7c7;
+    outline-offset: -5px;
+    border-radius: 56px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .buttonEnabled {
+    position: absolute;
+    left: 922px;
+    top: 502px;
+    width: 205px;
+    height: 104px;
+    align-items: flex-start;
+    outline-offset: -5px;
+    border-radius: 56px;
+    overflow: hidden;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(9, 159, 252);
+  }
+
+  .nextEnabled {
+    color: #000000;
+    font-size: 53.6385px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 38px;
+    top: 17px;
+    width: min-content; 
+    height: min-content;
+    white-space: nowrap;
+    flex-direction: column;
+  }
+
+  .nextDisabled {
+    color: #858585;
+    font-size: 53.6385px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 38px;
+    top: 17px;
+    width: min-content; 
+    height: min-content;
+    white-space: nowrap;
+    flex-direction: column;
+  }
+
+  .backButtonEnabled {
+    position: absolute;
+    left: 100px;
+    top: 502px;
+    width: 180px;
+    height: 90px;
+    align-items: flex-start;
+    outline-offset: -5px;
+    border-radius: 56px;
+    overflow: hidden;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+  }
+
+  .backButton {
+    color: #000000;
+    font-size: 40px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 10px;
+    top: 17px;
+    width: min-content; 
+    height: min-content;
+    white-space: nowrap;
+    flex-direction: column;
+  }
+
+  .neverUsed {
+    position: absolute;
+    left: 225px;
+    top: 380px;
+    width: min-content;
+    height: min-content;
+    text-align: end;
+    align-items: end;
+    white-space: nowrap;
+    flex-direction: column;
+  }
+  .textBlock {
+    color: #000;
+    font-size: 21.5755px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+  }
+  .textBlock2 {
+    color: #000;
+    font-size: 21.5755px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+  }
+  .iUseItAlmostEveryDay {
+    position: absolute;
+    left: 640px;
+    top: 380px;
+    width: min-content;
+    height: min-content;
+    white-space: nowrap;
+    flex-direction: column;
+  }
+  .textBlock3 {
+    color: #000;
+    font-size: 21.5755px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+  }
+  .textBlock4 {
+    color: #000;
+    font-size: 21.5755px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+  }
+  .textBlock5 {
+    margin-top: 0;
+    color: #000;
+    font-size: 21.5755px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+  }
+  .download2 {
+    position: absolute;
+    left: 617px;
+    top: 166px;
+    width: 53px;
+    height: 64px;
+    background-image:/* webpackIgnore: true */ url('/images/download2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .frame58 {
+    position: absolute;
+    left: 350px; 
+    top: 360px;
+    width: 290px;
+    height: 94px;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+  ._1 {
+    color: #c7c7c7;
+    font-size: 15.3253px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 24px;
+    top: 65px;
+    width: min-content;
+    height: min-content;
+    white-space: nowrap;
+    flex-direction: column;
+  }
+  ._2 {
+    color: #c7c7c7;
+    font-size: 15.3253px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 80px;
+    top: 65px;
+    width: min-content;
+    height: min-content;
+    white-space: nowrap;
+    flex-direction: column;
+  }
+  ._3 {
+    color: #c7c7c7;
+    font-size: 15.3253px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 136px;
+    top: 65px;
+    width: min-content;
+    height: min-content;
+    white-space: nowrap;
+    flex-direction: column;
+  }
+  ._4 {
+    color: #c7c7c7;
+    font-size: 15.3253px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 192px;
+    top: 65px;
+    width: min-content;
+    height: min-content;
+    white-space: nowrap;
+    flex-direction: column;
+  }
+  ._5 {
+    color: #c7c7c7;
+    font-size: 15.3253px;
+    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 250px;
+    top: 65px;
+    width: min-content;
+    height: min-content;
+    white-space: nowrap;
+    flex-direction: column;
+  }
+
+  
+  .bold {
+    font-weight: bold;
+    color:#000;
+    }
+  
