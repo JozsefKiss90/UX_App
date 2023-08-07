@@ -1,12 +1,12 @@
 // pages/experience.js
 import Likert from '../../components/likert';
-import { CheckboxProvider } from '../../components/likert';
 import resets from '../../components/_resets.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Experience() {
 
   const [likertProgress, setLikertProgress] = useState(0)
+
 
   const likertText = {
       0 : {
@@ -18,8 +18,12 @@ function Experience() {
         ranking : ["Never used",  <>I use it almost <br /> every day</>]
       },
       2 : {
-        question : "On a scale of 1 to 5, please rate your proficiency level in spreadsheet apps.(eg.: or .)",
+        question : "Please indicate your level of experience with Google Sheets",
         ranking : ["Beginner", "Expert"]
+      },
+      3 : {
+        question : "Have you ever experienced confusion with the decimal increase / decrease button(    ) in the past?",
+        ranking : ["Never", "Always"]
       }
   }
 

@@ -3,9 +3,11 @@ import UserData from '../../models/user_data.model'
 import { NextApiRequest, NextApiResponse } from 'next';
  
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    
-    connectToDb()
-    .catch(err=>res.json(err)) 
+    try {
+        await connectToDb();
+      } catch (err) {
+        return res.status(500).json(err);
+      }    
     
     if(req.method === 'GET') {
         try { 
@@ -19,19 +21,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     else if(req.method === 'POST') {
         if(!req.body) return res.status(404).json({error:'form data is missing'})
         console.log("req body: " + JSON.stringify(req.body))
-        const { task, coordinates, email} = req.body
+        const { task, coordinates, email, likert} = req.body
  
-        const userData = new UserData({task, coordinates, email});
-        userData.save()
-        .then(data => {
-            res.status(201).json({status:true, user:data})
+        const userData = new UserData({task, coordinates, email, likert});
+        userData
+        .save()
+        .then((data) => {
+            res.status(201).json({ status: true, user: data });
         })
-        .catch(err => {
-            return res.status(404).json({err})
+        .catch((err) => {
+            return res.status(404).json({ err });
         });
-  
-    }
-    else { 
-        res.status(500).json({message: 'HTTP method not valid'})
-    }
+        } else {
+            res.status(500).json({ message: 'HTTP method not valid' });
+        }
 }

@@ -1,9 +1,4 @@
-import { useEffect, useState } from 'react';
-import Image from "next/image";
-import MySvg from './task_2.svg';
-import MySvgBlurred from './task_2_blur.svg';
 import styles from '../../styles/FirstTask.module.scss'
-import MouseTracker from '../../components/mouseTracker'
 
 const Instruction = ({ progress, setProgress } : any) => {
 

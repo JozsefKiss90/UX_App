@@ -10,6 +10,7 @@ interface User_data extends Document {
   task: string;
   coordinates: { [key: string]: Coordinates };
   email: string;
+  likert: { [key: number]: number };
 }
 
 let ResponseSchema: Model<User_data>;
@@ -29,6 +30,10 @@ try {
       },
       email: {
         type: String,
+        required: true,
+      },
+      likert: { 
+        type: Schema.Types.Mixed,
         required: true,
       },
     }, { collection: 'response_schema' })
