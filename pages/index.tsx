@@ -1,6 +1,6 @@
 import Instruction from './tasks/instruction'
 import Instruction2 from './tasks/instruction_2';
-import { useEffect, useState } from 'react'
+import {useEffect, useState } from 'react'
 import Task from './tasks/task'
 import SVG1 from './tasks/svg/task_1.svg';
 import SVGFeedback1 from './tasks/svg/task_1_feedback.svg';
@@ -10,6 +10,16 @@ import SVGFeedback2 from './tasks/svg/task_2_feedback.svg';
 import SVGBlurred2 from './tasks/svg/task_2_blur.svg';
 import { useCheckboxContext } from '../context/checkboxcontext';
 import Experience from './tasks/experience';
+import { useLikertProgressContext } from '../context/likertProgressContext';
+
+type Data = {
+  task: string;
+  coordinates: any;
+  likert: { [key: number]: number };
+  email?: string;
+  feedback?: string;
+};
+
 
 export default function Home() {
 
@@ -17,8 +27,9 @@ export default function Home() {
   const [currentTask, setCurrentTask] = useState(0);
   const [responsData, setResponseData] = useState({})
   const [taskComplete, setTaskComplete] = useState(false)
-  const { likertAnswers, setLikertAnswers } = useCheckboxContext();
-  console.log(instructionProgress)
+  const { likertAnswers} = useCheckboxContext();
+  const {likertProgress, feedback, email } = useLikertProgressContext()
+
   const tasks = [
     {
       SVG: SVG1,
@@ -52,11 +63,18 @@ export default function Home() {
     console.log('RESPONSE: '+JSON.stringify(responsData));
     console.log(taskComplete)
     if(taskComplete) {
-      let data =  {
+      let data : Data = {
         task: "Task description",
         coordinates: responsData,
-        email: "example@example.com",
         likert: likertAnswers
+      };
+      
+      if (email) {
+        data.email = email;
+      }
+      
+      if (feedback) {
+        data.feedback = feedback;
       }
       let options = {
         method : 'POST',
@@ -64,7 +82,7 @@ export default function Home() {
         body: JSON.stringify(data)
       }
       console.log(options)
-      if (taskComplete && Object.keys(likertAnswers).length === 3) {
+      if (taskComplete && likertProgress === 5) {
         fetch('/api/user_data', options)
           .then(res => {
             console.log(res.status)
@@ -79,7 +97,7 @@ export default function Home() {
       }
       
     }
-}, [responsData, taskComplete, likertAnswers]);
+}, [responsData, taskComplete, feedback, email, likertProgress]);
   
   return (
     <div>

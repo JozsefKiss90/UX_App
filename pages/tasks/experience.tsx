@@ -3,10 +3,9 @@ import Likert from '../../components/likert';
 import resets from '../../components/_resets.module.css';
 import { useEffect, useState } from 'react';
 
+
+
 function Experience() {
-
-  const [likertProgress, setLikertProgress] = useState(0)
-
 
   const likertText = {
       0 : {
@@ -29,7 +28,7 @@ function Experience() {
 
   return (
     <div className={`${resets.storybrainResets}`}>
-      <Likert likertProgress ={likertProgress} setLikertProgress = {setLikertProgress} likertText = {likertText}/>
+      <Likert likertText = {likertText}/>
     </div>
   );
 }

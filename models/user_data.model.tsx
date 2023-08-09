@@ -10,6 +10,7 @@ interface User_data extends Document {
   task: string;
   coordinates: { [key: string]: Coordinates };
   email: string;
+  feedback : string,
   likert: { [key: number]: number };
 }
 
@@ -30,7 +31,11 @@ try {
       },
       email: {
         type: String,
-        required: true,
+        required: false,
+      },
+      feedback: {
+        type: String,
+        required: false
       },
       likert: { 
         type: Schema.Types.Mixed,

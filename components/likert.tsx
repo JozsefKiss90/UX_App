@@ -5,8 +5,20 @@ import resets from './_resets.module.css';
 import { useEffect, useState, useRef } from 'react';
 import { useCheckboxContext } from '../context/checkboxcontext';
 import Feedback from '../pages/tasks/feedback';
+import { useLikertProgressContext } from '../context/likertProgressContext';
 
-function Likert({likertProgress, setLikertProgress, likertText}) {
+type LikertTextType = {
+  [key: number]: {
+    question: string;
+    ranking: (string | JSX.Element)[];
+  };
+};
+
+interface LikertProps {
+  likertText: LikertTextType;
+}
+
+function Likert({likertText}: LikertProps) {
     
   const checkboxClasses = [
     classes.lickert5,
@@ -17,6 +29,7 @@ function Likert({likertProgress, setLikertProgress, likertText}) {
   ];
 
   const { checkboxStates, handleCheckboxChange } = useCheckboxContext();
+  const {likertProgress, setLikertProgress} = useLikertProgressContext();
   const [enableButton, setEnableButton] = useState(false)
 
   useEffect(() => {
@@ -38,6 +51,7 @@ function Likert({likertProgress, setLikertProgress, likertText}) {
       setLikertProgress(likertProgress + 1);
       setEnableButton(false);
       console.log(checkboxStates);
+
     }
   };
   
@@ -101,7 +115,7 @@ function Likert({likertProgress, setLikertProgress, likertText}) {
       : likertProgress === 4 ? (
         <>
           <Feedback/>
-          <button className={enableButton ? classes.buttonEnabled : classes.buttonDisabled} onClick={handleLikertProgress}>
+          <button className={enableButton ? classes.buttonEnabled : classes.buttonDisabled} onClick={()=>{handleLikertProgress()}}>
             <div className={enableButton ? classes.nextEnabled : classes.nextDisabled}>Next</div>
           </button>
           {likertProgress > 0 && (
