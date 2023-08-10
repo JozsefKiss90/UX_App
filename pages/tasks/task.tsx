@@ -11,20 +11,24 @@ const Task = (props:any) => {
   const [startTime, setStartTime] = useState(0) 
   const [showFeedback, setShowFeedback] = useState(false)
   const [foundTargets, setFoundTargets] = useState(0)
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
     useEffect(() => {
       const interactiveRects = document.querySelectorAll('[data-interactive="true"]')
-      interactiveRects.forEach(rect => {
-        rect.setAttribute('style', 'cursor: pointer')
-        rect.addEventListener('click', handleTarget)
-      })
-
+      if(!blur) {
+        interactiveRects.forEach(rect => {
+          rect.setAttribute('style', 'cursor: pointer')
+          rect.addEventListener('click', handleTarget)
+        })
+      }
+      setButtonDisabled(false)
       return () => {
         interactiveRects.forEach(rect => {
           rect.removeEventListener('click', handleBlur)
           rect.removeEventListener('click', handleTarget)
         })
       }
-    }, [blur,targetFound])
+    }, [blur])
 
     useEffect(() => {
         setBlur(true)
@@ -51,24 +55,26 @@ const Task = (props:any) => {
     const handleProgress = (e) => {
       setProgress(progress + 1)
       if(progress == 1) { 
+        setButtonDisabled(true);
         setStartTime(Date.now()) 
       }
     }
 
     const handleTarget = (e) => {
         const svgElement = document.querySelector('svg')
-        
-        console.log('Element found:', e.target)
-        console.log('Found targets:', foundTargets)
+        const interactiveRects = document.querySelectorAll('[data-interactive="true"]')
+        interactiveRects.forEach(rect => {
+          rect.removeEventListener('click', handleBlur)
+          rect.removeEventListener('click', handleTarget)
+        })
+        //console.log('Element found:', e.target)
+       // console.log('Found targets:', foundTargets)
         if (svgElement) {
           let pt = svgElement.createSVGPoint()
           pt.x = e.clientX
           pt.y = e.clientY
           let svgP = pt.matrixTransform(svgElement.getScreenCTM().inverse())
-          console.log('Target coordinates:', svgP.x, svgP.y) 
-        
           const elapsed = Date.now() - startTime 
-          console.log('Time to find the target:', elapsed)
           setTargetFound(true)
           setResponse((prevResponse : any) => ({
             ...prevResponse,
@@ -99,7 +105,7 @@ const Task = (props:any) => {
       }}>
         Understood
       </button> : 
-      progress == 1 ? <button className={styles.centeredButton} onClick={(e) => {
+      progress == 1 ? <button disabled={buttonDisabled} className={styles.centeredButton} onClick={(e) => {
         handleBlur(e); handleProgress(e)
       }}>
         Reveal

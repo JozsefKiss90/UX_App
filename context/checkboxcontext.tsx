@@ -26,27 +26,23 @@ export function CheckboxProvider({ children }) {
     const [likertAnswers, setLikertAnswers] = useState({})
     
     const handleCheckboxChange = (questionIndex: number, checkboxIndex: number) => {
-        if(questionIndex === -1) {
-            setCheckboxStates(Array.from({ length: 4 }, () => new Array(5).fill(false)));
-            return;
-        }
+      if (questionIndex === -1) {
+        setCheckboxStates(Array.from({ length: 5 }, () => new Array(5).fill(false)));
+        return;
+      }
     
-        setCheckboxStates(prevStates => {
-            const newStates = [...prevStates];
-            if (newStates[questionIndex]) {
-                newStates[questionIndex][checkboxIndex] = !newStates[questionIndex][checkboxIndex];
-            }
-            return newStates;
-        });
-        let trueIndex
-        setLikertAnswers((prevState : any) => (
-          trueIndex = checkboxStates[Object.keys(prevState).length].findIndex((answer : Boolean )=> answer === true),
-          {
-          ...prevState,
-          [Object.keys(prevState).length]: trueIndex + 1,
-        }))
+      setCheckboxStates(prevStates => {
+        const newStates = [...prevStates];
+        newStates[questionIndex] = newStates[questionIndex].map((_, index) => index === checkboxIndex);
+        return newStates;
+      });
+    
+      setLikertAnswers(prevState => ({
+        ...prevState,
+        [questionIndex]: checkboxIndex + 1, // Set the selected checkbox index + 1 as the answer
+      }));
     };
-    console.log(likertAnswers)
+    
       
     return (
       <CheckboxContext.Provider value={{ checkboxStates, handleCheckboxChange,  likertAnswers }}>

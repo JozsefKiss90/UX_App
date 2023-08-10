@@ -8,7 +8,7 @@ const Feedback = () => {
     const {email, feedback, setEmail, setFeedback } = useLikertProgressContext()
 
   return (  
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', position:'relative', top:'50px', left:'10%' }}>
       <Box
         component="form"
         sx={{
@@ -19,7 +19,7 @@ const Feedback = () => {
         noValidate
         autoComplete="off"
       >
-        <h3 style={{ margin: 0 }}>
+        <h3 style={{ margin: 0, color:'#303030' }}>
           Any feedback on the experiment are welcomed! (optional)
         </h3>
         <div>
@@ -51,7 +51,7 @@ const Feedback = () => {
         noValidate
         autoComplete="off"
       >
-        <h3 style={{ margin: 0 }}>
+        <h3 style={{ margin: 0,  color:'#303030' }}>
           Email for the results and other experiments (less than 1 per month) (optional)
         </h3>
         <div>

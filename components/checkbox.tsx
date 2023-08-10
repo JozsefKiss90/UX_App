@@ -7,7 +7,7 @@ const Checkbox = ({ className, isChecked, onChange }) => (
     className={`${resets.storybrainResets} ${className} ${classes.root}`}
     type="checkbox"
     checked={isChecked}
-    onChange={onChange}
+    onChange={onChange} 
 />
 );
 

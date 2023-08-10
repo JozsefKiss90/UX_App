@@ -58,7 +58,7 @@ export default function Home() {
       setCurrentTask((prevTask) => prevTask + 1);
     }, 1000);  
   }
-  console.log(likertAnswers)
+  console.log('LIKERT ANSWERS: '+JSON.stringify(likertAnswers))
   useEffect(() => {
     console.log('RESPONSE: '+JSON.stringify(responsData));
     console.log(taskComplete)
