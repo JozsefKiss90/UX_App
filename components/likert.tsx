@@ -120,19 +120,19 @@ function Likert({likertText}: LikertProps) {
         </div> : ""}
       </div>
       <div className={classes.download2}></div>
-      <div className={classes.frame58}>
-      {checkboxClasses.map((checkboxClass, index) => (
-        <div key={index}>
-          <Checkbox
-            className={checkboxClass}
-            isChecked={checkboxStates[likertProgress][index]}
-            onChange={() => handleCheckboxChange(likertProgress, index)}
-          />
-          <div className={`${numberClasses[index]} ${checkboxStates[likertProgress][index] ? classes.bold : ''}`}>
-            {index + 1}
+      <div className={classes.frame58} style={{ display: 'flex', alignItems: 'center' }}>
+        {checkboxClasses.map((checkboxClass, index) => (
+          <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Checkbox 
+              className={classes.commonCheckbox}
+              isChecked={checkboxStates[likertProgress][index]}
+              onChange={() => handleCheckboxChange(likertProgress, index)}
+            />
+            <div className={`${numberClasses[index]} ${checkboxStates[likertProgress][index] ? classes.bold : ''}`}>
+              {index + 1}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
       </div>
       </div>
       : likertProgress === 4 ? (

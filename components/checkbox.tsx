@@ -4,7 +4,7 @@ import resets from './_resets.module.css';
 
 const Checkbox = ({ className, isChecked, onChange }) => (
   <input
-    className={`${resets.storybrainResets} ${className} ${classes.root}`}
+    className={`${resets.storybrainResets} ${className} `}
     type="checkbox"
     checked={isChecked}
     onChange={onChange} 

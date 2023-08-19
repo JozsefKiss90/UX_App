@@ -18,6 +18,14 @@
     left: 232px;
     top: 17px;
   }
+
+  .commonCheckbox {
+    width: 50px;
+    height: 50px;
+    outline: solid 2px #484b4b;
+    margin-right: 20px;
+  } 
+
   .root {
     position: relative;
     width: 1600px;
@@ -83,20 +91,26 @@
 
   .nextDisabled {
     color: #858585;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 53.6385px;
     font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
       'Liberation Sans', sans-serif;
-    position: absolute;
     left: 38px;
     top: 17px;
     width: min-content; 
     height: min-content;
     white-space: nowrap;
     flex-direction: column;
+    margin: auto auto 20px auto;
   }
 
   .backButtonEnabled {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     left: 100px;
     top: 502px;
     width: 180px;
@@ -193,8 +207,6 @@
     right: 15px;
   }
 
-
- 
   .download2 {
     position: absolute;
     left: 617px;

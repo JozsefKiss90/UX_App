@@ -11,7 +11,7 @@ interface User_data extends Document {
   coordinates: { [key: string]: Coordinates };
   email: string;
   feedback : string,
-  likert: { [key: number]: number };
+  likert: { [key: number]: number }; 
 }
 
 let ResponseSchema: Model<User_data>;

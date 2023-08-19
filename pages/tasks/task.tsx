@@ -3,7 +3,7 @@ import styles from '../../styles/FirstTask.module.scss'
 import MouseTracker from '../../components/mouseTracker'
 
 const Task = (props:any) => {
-  const { onComplete, SVG, SVGBlurred, SVGFeedback, setResponse, currentTask, setTaskComplete } = props
+  const { onComplete, SVG, SVGBlurred, setResponse, currentTask, setTaskComplete } = props
   
   const [blur, setBlur] = useState(true)
   const [progress, setProgress] = useState(0)
@@ -12,6 +12,9 @@ const Task = (props:any) => {
   const [showFeedback, setShowFeedback] = useState(false)
   const [foundTargets, setFoundTargets] = useState(0)
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [circleX, setCircleX] = useState(0);
+  const [circleY, setCircleY] = useState(0);
+ 
 
     useEffect(() => {
       const interactiveRects = document.querySelectorAll('[data-interactive="true"]')
@@ -84,6 +87,8 @@ const Task = (props:any) => {
               response_time: elapsed
             },
           }))
+          setCircleX(svgP.x);
+          setCircleY(svgP.y);
         }
         setFoundTargets(foundTargets + 1)
           if(foundTargets == 3) {
@@ -98,9 +103,27 @@ const Task = (props:any) => {
       
 
   return (
+    <>
+    <div>
+      <p>
+        Task 1
+      </p>
+      <h1>
+        Task 0? Make A? (selected) similar to A? with one click.  
+      </h1>
+    </div>
     <div className={styles.svgContainer}>
-      {showFeedback ? <SVGFeedback /> : blur ? <SVGBlurred /> : <SVG />}
-      {progress == 0 ? <button className={styles.centeredButton} onClick={(e) => {
+      {showFeedback ? 
+        <div className={styles.svgContainer}>
+          <SVG/>
+          <svg className={styles.overlaySvg} width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx={circleX} cy={circleY} r="16.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
+            <circle cx={circleX} cy={circleY} r="10.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
+            <circle cx={circleX} cy={circleY} r="4.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
+          </svg>
+          </div>
+      : blur ? <SVGBlurred /> : <SVG />}
+      {progress == 0 ? <button className={styles.topButton} style={{}} onClick={(e) => {
         handleProgress(e)
       }}>
         Understood
@@ -111,6 +134,7 @@ const Task = (props:any) => {
         Reveal
       </button> : ''}
     </div>
+    </>
   )
 }
 

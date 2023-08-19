@@ -8,6 +8,7 @@ import SVGBlurred1 from './tasks/svg/task_1_blur.svg';
 import SVG2 from './tasks/svg/task_2.svg';
 import SVGFeedback2 from './tasks/svg/task_2_feedback.svg';
 import SVGBlurred2 from './tasks/svg/task_2_blur.svg';
+import SVG3 from './tasks/svg/task_3.svg';
 import { useCheckboxContext } from '../context/checkboxcontext';
 import Experience from './tasks/experience';
 import { useLikertProgressContext } from '../context/likertProgressContext';
@@ -32,7 +33,7 @@ export default function Home() {
 
   const tasks = [
     {
-      SVG: SVG1,
+      SVG: SVG3,
       SVGBlurred: SVGBlurred1,
       SVGFeedback: SVGFeedback1,
     },
@@ -72,7 +73,7 @@ export default function Home() {
       if (email) {
         data.email = email;
       }
-      
+       
       if (feedback) {
         data.feedback = feedback;
       }
@@ -105,7 +106,8 @@ export default function Home() {
       instructionProgress < 4 ? 
         <Instruction progress={instructionProgress} setProgress={setInstructionProgress} />
       : instructionProgress == 4 && currentTask < tasks.length ? 
-        <Task {...tasks[currentTask]} currentTask={currentTask} setResponse={setResponseData} response={responsData} onComplete={handleTaskComplete} setTaskComplete={setTaskComplete}/>
+        <Task {...tasks[currentTask]} currentTask={currentTask} setResponse={setResponseData} response={responsData}
+         onComplete={handleTaskComplete} setTaskComplete={setTaskComplete}/>
       : taskComplete && instructionProgress == 4 ? 
         <Instruction2 progress={instructionProgress} setProgress={setInstructionProgress}/>
       : instructionProgress == 5 ? 
