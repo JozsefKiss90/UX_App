@@ -1,6 +1,6 @@
 .svgContainer {
-    position: relative;
-    top: 20%;
+    position: absolute;
+    top: 25%;
     left: 10%;
   }
   
@@ -11,7 +11,14 @@
     z-index: 10;
   }
   
-  
+.instruction{
+  position: relative;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .centeredButton {
     position: absolute;
     top: 55%;
@@ -32,11 +39,30 @@
     text-align: center;
 }
 
+.revealButton {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgb(63, 158, 240);
+  font-size: 2rem;
+  padding: 20px 30px;
+  border: 1px solid rgb(63, 158, 240);
+  border-radius: 30px;
+  cursor: pointer;
+  width: 200px;  /* adjust this value as needed */
+  height: 60px;  /* adjust this value as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .topButton {
-    position: absolute;
-    top: 22%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    left: 10px;
+    top: 5px;
     color: white;
     background-color: rgb(63, 158, 240);
     font-size: 2rem;

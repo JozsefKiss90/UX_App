@@ -2,16 +2,18 @@ import Instruction from './tasks/instruction'
 import Instruction2 from './tasks/instruction_2';
 import {useEffect, useState } from 'react'
 import Task from './tasks/task'
-import SVG1 from './tasks/svg/task_1.svg';
-import SVGFeedback1 from './tasks/svg/task_1_feedback.svg';
-import SVGBlurred1 from './tasks/svg/task_1_blur.svg';
-import SVG2 from './tasks/svg/task_2.svg';
-import SVGFeedback2 from './tasks/svg/task_2_feedback.svg';
-import SVGBlurred2 from './tasks/svg/task_2_blur.svg';
-import SVG3 from './tasks/svg/task_3.svg';
+import SVG1_new from './tasks/svg/task_A1_0.svg';
+import SVG2_new from './tasks/svg/task_A2_1.svg';
+import SVG3_new from './tasks/svg/task_A3_2.svg';
+import SVG4_new from './tasks/svg/task_A4_3.svg';
+import SVG1_old from './tasks/svg/task_1_old.svg';
+import SVG2_old from './tasks/svg/task_2_old.svg';
+import SVG3_old from './tasks/svg/task_3_old.svg';
+import SVG4_old from './tasks/svg/task_4_old.svg';
+import SVGBlurred3 from './tasks/svg/task_3_blur.svg'; 
 import { useCheckboxContext } from '../context/checkboxcontext';
 import Experience from './tasks/experience';
-import { useLikertProgressContext } from '../context/likertProgressContext';
+import { useLikertProgressContext } from '../context/likertProgressContext'; 
 
 type Data = {
   task: string;
@@ -33,25 +35,89 @@ export default function Home() {
 
   const tasks = [
     {
-      SVG: SVG3,
-      SVGBlurred: SVGBlurred1,
-      SVGFeedback: SVGFeedback1,
+      SVG: SVG1_new,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'increase',
+      cell: 'A1',
+      target:'A2'
     },
     {
-      SVG: SVG2,
-      SVGBlurred: SVGBlurred2,
-      SVGFeedback: SVGFeedback2,
+      SVG: SVG2_new,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'increase',
+      cell: 'A2',
+      target:'A3'
     },
     {
-      SVG: SVG1,
-      SVGBlurred: SVGBlurred1,
-      SVGFeedback: SVGFeedback1,
+      SVG: SVG3_new,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'increase',
+      cell: 'A3',
+      target:'A4'
     },
     {
-      SVG: SVG2,
-      SVGBlurred: SVGBlurred2,
-      SVGFeedback: SVGFeedback2,
-    }
+      SVG: SVG2_new,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'decrease',
+      cell: 'A2',
+      target:'A1'
+    },
+    {
+      SVG: SVG3_new,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'decrease',
+      cell: 'A3',
+      target:'A2'
+    },
+    {
+      SVG: SVG4_new,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'decrease',
+      cell: 'A4',
+      target:'A3'
+    },
+    {
+      SVG: SVG1_old,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'increase',
+      cell: 'A1',
+      target:'A2'
+    },
+    {
+      SVG: SVG2_old,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'increase',
+      cell: 'A2',
+      target:'A3'
+    },
+    {
+      SVG: SVG3_old,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'increase',
+      cell: 'A3',
+      target:'A4'
+    },
+    {
+      SVG: SVG2_old,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'decrease',
+      cell: 'A2',
+      target:'A1'
+    },
+    {
+      SVG: SVG3_old,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'decrease',
+      cell: 'A3',
+      target:'A2'
+    },
+    {
+      SVG: SVG4_old,
+      SVGBlurred: SVGBlurred3,
+      instruction: 'decrease',
+      cell: 'A4',
+      target:'A3'
+    },
   ];
   console.log(taskComplete)
   const handleTaskComplete = () => {
@@ -74,7 +140,7 @@ export default function Home() {
         data.email = email;
       }
        
-      if (feedback) {
+      if (feedback) { 
         data.feedback = feedback;
       }
       let options = {

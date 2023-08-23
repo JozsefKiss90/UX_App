@@ -2,7 +2,7 @@
     left: 8px;
     top: 17px;
   }
-  .lickert4.lickert4 {
+  .lickert4.lickert4 { 
     left: 64px;
     top: 17px;
   }
@@ -22,7 +22,7 @@
   .commonCheckbox {
     width: 50px;
     height: 50px;
-    outline: solid 2px #484b4b;
+
     margin-right: 20px;
   } 
 
@@ -40,8 +40,8 @@
     font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
       'Liberation Sans', sans-serif;
     position: absolute;
-    left: 156px;
-    top: 124px;
+    left: 100px;
+    top: 100px;
     width: 1000px;
     height: min-content;
     flex-direction: column;
@@ -140,7 +140,7 @@
 
   .neverUsed { 
     position: absolute;
-    left: 255px;
+    left: 230px;
     top: 310px;
     width: min-content;
     height: min-content;
@@ -164,7 +164,7 @@
 
   .iUseItAlmostEveryDay {
     position: absolute;
-    left: 645px;
+    left: 700px;
     top: 300px;
     width: min-content;
     height: min-content;
@@ -174,7 +174,7 @@
 
   .iUseItAlmostEveryDay_2 {
     position: absolute;
-    left: 645px;
+    left: 700px;
     top: 310px;
     width: min-content;
     height: min-content;
@@ -195,16 +195,7 @@
     font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
       'Liberation Sans', sans-serif; 
     position: relative;
-    right: 15px;
-  }
-
-  .textBlock_2 {
-    color: #000;
-    font-size: 21.5755px;
-    font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-      'Liberation Sans', sans-serif; 
-    position: relative;
-    right: 15px;
+    right: -20px;
   }
 
   .download2 {
@@ -224,7 +215,7 @@
     width: 290px;
     height: 94px;
     align-items: flex-start;
-    overflow: hidden;
+
   }
   ._1 {
     color: #c7c7c7;
@@ -232,8 +223,8 @@
     font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
       'Liberation Sans', sans-serif;
     position: absolute;
-    left: 24px;
-    top: 65px;
+    left: 8px;
+    top: 17px;
     width: min-content;
     height: min-content;
     white-space: nowrap;
@@ -245,8 +236,8 @@
     font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
       'Liberation Sans', sans-serif;
     position: absolute;
-    left: 80px;
-    top: 65px;
+    left: 64px;
+    top: 17px;
     width: min-content;
     height: min-content;
     white-space: nowrap;

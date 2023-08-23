@@ -9,10 +9,10 @@ function Experience() {
           <div className="question-container">
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <p style={{ margin: 0 }}>
-                Please indicate your level of experience<br />with Microsoft Excel.
+                Please indicate your level of experience<br />with Microsoft Excel
               </p>
               <img src="/images/excel.png" alt="Microsoft Excel" style={{ width: '50px', height: '50px', position:"absolute",
-            left:'340px', top:"50px"}} />
+            left:'330px', top:"50px"}} />
             </div>
           </div>
         ),
@@ -23,10 +23,10 @@ function Experience() {
         <div className="question-container">
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <p style={{ margin: 0 }}>
-              Please indicate your level of experience<br />with Google Sheets.
+              Please indicate your level of experience<br />with Google Sheets
             </p>
             <img src="/images/sheets.png" alt="Microsoft Excel" style={{ width: '50px', height: '50px', position:"absolute",
-          left:'330px', top:"50px"}} />
+           left:'330px', top:"50px"}} />
           </div>
         </div>,
         ranking : ["Never used",  <>I use it almost <br /> every day</>]
@@ -52,7 +52,7 @@ function Experience() {
                 </p>
                 <img src="/images/sheets.png" alt="Microsoft Excel" style={{ width: '50px', height: '50px' }} />
                 <p>
-                  ).
+                  )
                 </p>
               </div>
             </div>

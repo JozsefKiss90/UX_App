@@ -3,7 +3,7 @@ import styles from '../../styles/FirstTask.module.scss'
 import MouseTracker from '../../components/mouseTracker'
 
 const Task = (props:any) => {
-  const { onComplete, SVG, SVGBlurred, setResponse, currentTask, setTaskComplete } = props
+  const { onComplete, SVG, cell, target, SVGBlurred, setResponse, currentTask, setTaskComplete } = props
   
   const [blur, setBlur] = useState(true)
   const [progress, setProgress] = useState(0)
@@ -74,8 +74,8 @@ const Task = (props:any) => {
        // console.log('Found targets:', foundTargets)
         if (svgElement) {
           let pt = svgElement.createSVGPoint()
-          pt.x = e.clientX
-          pt.y = e.clientY
+          pt.x = e.clientX 
+          pt.y = e.clientY 
           let svgP = pt.matrixTransform(svgElement.getScreenCTM().inverse())
           const elapsed = Date.now() - startTime 
           setTargetFound(true)
@@ -104,31 +104,35 @@ const Task = (props:any) => {
 
   return (
     <>
-    <div>
-      <p>
-        Task 1
-      </p>
+    <div className={styles.instruction}>
       <h1>
-        Task 0? Make A? (selected) similar to A? with one click.  
+        Task {`${currentTask + 1}`}
       </h1>
-    </div>
+     <div style={{display:'flex', flexDirection:"row", alignItems:'center'}}>
+        <h1>
+        Make {`${cell}`} (selected) similar to {`${target}`} with one click  
+        </h1>
+        {progress == 0 ? <button className={styles.topButton} style={{}} onClick={(e) => {
+          handleProgress(e)
+        }}>
+          Understood
+        </button> : 
+        ''}
+     </div>
+    </div> 
     <div className={styles.svgContainer}>
       {showFeedback ? 
-        <div className={styles.svgContainer}>
+        <div>
           <SVG/>
-          <svg className={styles.overlaySvg} width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className={styles.overlaySvg} width="1185" height="433" viewBox="0 0 1185 433" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/1999/xlink">
             <circle cx={circleX} cy={circleY} r="16.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
             <circle cx={circleX} cy={circleY} r="10.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
             <circle cx={circleX} cy={circleY} r="4.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
           </svg>
-          </div>
+        </div>
       : blur ? <SVGBlurred /> : <SVG />}
-      {progress == 0 ? <button className={styles.topButton} style={{}} onClick={(e) => {
-        handleProgress(e)
-      }}>
-        Understood
-      </button> : 
-      progress == 1 ? <button disabled={buttonDisabled} className={styles.centeredButton} onClick={(e) => {
+      {
+      progress == 1 ? <button disabled={buttonDisabled} className={styles.revealButton} onClick={(e) => {
         handleBlur(e); handleProgress(e)
       }}>
         Reveal

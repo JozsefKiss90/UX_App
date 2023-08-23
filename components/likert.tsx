@@ -7,6 +7,7 @@ import { useCheckboxContext } from '../context/checkboxcontext';
 import Feedback from '../pages/tasks/feedback';
 import { useLikertProgressContext } from '../context/likertProgressContext';
 import { useRouter } from 'next/router';
+import zIndex from '@mui/material/styles/zIndex';
 
 type LikertTextType = {
   [key: number]: {
@@ -92,47 +93,73 @@ function Likert({likertText}: LikertProps) {
   return (
     <>
        <div className={`${resets.storybrainResets} ${classes.root}`}>
-      {likertProgress < 4 ? <div>
+      {likertProgress < 4 ? 
+      <div>
         <div className={classes.pleaseIndicateYourLevelOfExper}>
-        {likertText[likertProgress].question}
-      </div>
-      <button className={enableButton ? classes.buttonEnabled : classes.buttonDisabled} onClick={()=>{handleLikertProgress()}}>
-        <div className={enableButton ? classes.nextEnabled : classes.nextDisabled}>Next</div>
-      </button>
-      {likertProgress > 0 ? 
-        <button className={classes.backButtonEnabled} onClick={()=>{handleBackProgress()}}>
-          <div  className={classes.backButton}>&lt; Back</div>
-      </button>
-      : ""
+          {likertText[likertProgress].question}
+        </div>
+        <button className={enableButton ? classes.buttonEnabled : classes.buttonDisabled} onClick={()=>{handleLikertProgress()}}>
+          <div className={enableButton ? classes.nextEnabled : classes.nextDisabled}>Next</div>
+        </button>
+        {likertProgress > 0 ? 
+          <button className={classes.backButtonEnabled} onClick={()=>{handleBackProgress()}}>
+            <div  className={classes.backButton}>&lt; Back</div>
+        </button>
+        : ""
       }
+      {/*
       <div className={likertProgress === 3 ? classes.neverUsed_2 : classes.neverUsed}>
         <div className={likertProgress === 2 ?  classes.textBlock_2 : classes.textBlock}>{likertText[likertProgress].ranking[0]}</div>
         {likertProgress === 2 ? 
-        <div style={{ position: "relative", right : "8px" }}>
+        <div style={{ position: "relative", right : "0" }}>
           (=SUM(), A1+B1)
         </div> : ""}
       </div>
       <div className={likertProgress === 2 ?  classes.iUseItAlmostEveryDay_2 : likertProgress === 3 ?  classes.iUseItAlmostEveryDay_2 : classes.iUseItAlmostEveryDay}>
         <div className={classes.textBlock}>{likertText[likertProgress].ranking[1]}</div>
         {likertProgress === 2 ? 
-        <div style={{ position: "relative", right : "0px" }}>
+        <div style={{ position: "relative", left : "10px", top:'3px', zIndex:"5" }}>
           (macros, VBA)
         </div> : ""}
       </div>
+ */
+      }
       <div className={classes.download2}></div>
       <div className={classes.frame58} style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{display:'flex', flexDirection:"column", justifyContent:'center'}}>
+          <div style={{display:'flex', textAlign:'center', flexDirection:'column',  fontSize:'1.2rem',
+           alignSelf:"center", position:'relative', marginRight:'10px', bottom: likertProgress === 2 ? '0' : '6px'}}>{likertText[likertProgress].ranking[0]}
+            {likertProgress === 2 ? 
+            <div>
+              (=SUM(), A1+B1)
+            </div> : ""}
+          
+          </div>
+          </div>
         {checkboxClasses.map((checkboxClass, index) => (
           <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Checkbox 
-              className={classes.commonCheckbox}
-              isChecked={checkboxStates[likertProgress][index]}
-              onChange={() => handleCheckboxChange(likertProgress, index)}
-            />
-            <div className={`${numberClasses[index]} ${checkboxStates[likertProgress][index] ? classes.bold : ''}`}>
-              {index + 1}
-            </div>
+           <div style={{display:'flex', flexDirection:"column", justifyItems:'center', alignItems:"center"}}>
+              <Checkbox 
+                className={classes.commonCheckbox}
+                isChecked={checkboxStates[likertProgress][index]}
+                onChange={() => handleCheckboxChange(likertProgress, index)}
+              />
+              <div style={{position:"relative", right:"10px"}} className={`${checkboxStates[likertProgress][index] ? classes.bold : ''}`}>
+                {index + 1}
+              </div>
+           </div>
           </div>
         ))}
+        <div style={{display:'flex', flexDirection:"column", justifyContent:'center'}}>
+          <div style={{display:'flex', textAlign:'center', flexDirection:'column', fontSize:'1.2rem',
+           alignSelf:"center", position:'relative', marginRight:'10px', bottom: likertProgress === 2 ? '0' : '6px'}}>
+            {likertText[likertProgress].ranking[1]}
+            {likertProgress === 2 ? 
+              <div>
+                (macros, VBA)
+              </div> : ""}
+            </div>
+        </div>
       </div>
       </div>
       : likertProgress === 4 ? (
