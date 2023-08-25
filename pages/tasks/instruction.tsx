@@ -9,7 +9,7 @@ const Instruction = ({ progress, setProgress } : any) => {
   return (
     <div>
       {progress == 0 ?
-        <>
+        <div className={styles.instuctionBox}>
           <h2>
             This is a super-short experiment, which takes 50-120 seconds of your precious time.
           </h2>
@@ -18,9 +18,9 @@ const Instruction = ({ progress, setProgress } : any) => {
           }}>
             Next
           </button>
-        </>
+        </div>
         : progress == 1 ? 
-        <>
+        <div className={styles.instuctionBox_2}>
           <h2>
             Our goal is to make Google Sheets better.
           </h2>
@@ -29,9 +29,9 @@ const Instruction = ({ progress, setProgress } : any) => {
           }}>
             Next
           </button>
-        </>
+        </div>
         : progress == 2 ? 
-        <>
+        <div className={styles.instuctionBox_2}>
           <h2>
             We will simulate very basics tasks in Google Sheets
           </h2>
@@ -40,9 +40,9 @@ const Instruction = ({ progress, setProgress } : any) => {
           }}>
             Next
           </button>
-        </>
+        </div>
         : progress == 3 ? 
-        <>
+        <div className={styles.instuctionBox_2}>
           <h2>
             Answer as fast as you can
           </h2>
@@ -51,7 +51,7 @@ const Instruction = ({ progress, setProgress } : any) => {
           }}>
             Next
           </button>
-        </>
+        </div>
         : ''
       }
     </div>

@@ -4,6 +4,8 @@ interface Coordinates {
   cx: number;
   cy: number;
   response_time: number;
+  instruction:string;
+  button_type: string; 
 }
 
 interface User_data extends Document {

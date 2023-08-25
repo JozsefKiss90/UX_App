@@ -107,7 +107,7 @@ function Likert({likertText}: LikertProps) {
         </button>
         : ""
       }
-      {/*
+      {/* 
       <div className={likertProgress === 3 ? classes.neverUsed_2 : classes.neverUsed}>
         <div className={likertProgress === 2 ?  classes.textBlock_2 : classes.textBlock}>{likertText[likertProgress].ranking[0]}</div>
         {likertProgress === 2 ? 
@@ -130,7 +130,7 @@ function Likert({likertText}: LikertProps) {
           <div style={{display:'flex', textAlign:'center', flexDirection:'column',  fontSize:'1.2rem',
            alignSelf:"center", position:'relative', marginRight:'10px', bottom: likertProgress === 2 ? '0' : '6px'}}>{likertText[likertProgress].ranking[0]}
             {likertProgress === 2 ? 
-            <div>
+            <div style={{color:"rgb(92, 92, 92)"}}>
               (=SUM(), A1+B1)
             </div> : ""}
           
@@ -155,7 +155,7 @@ function Likert({likertText}: LikertProps) {
            alignSelf:"center", position:'relative', marginRight:'10px', bottom: likertProgress === 2 ? '0' : '6px'}}>
             {likertText[likertProgress].ranking[1]}
             {likertProgress === 2 ? 
-              <div>
+              <div style={{color:"rgb(92, 92, 92)"}}>
                 (macros, VBA)
               </div> : ""}
             </div>

@@ -1,3 +1,25 @@
+.instuctionBox{
+  display: flex;
+  justify-content: center;
+}
+
+.instuctionBox_2 {
+  display: flex;
+  justify-content: center;
+}
+
+.instuctionBox h2 {
+  text-align: left;
+  margin-top: 300px;
+  width: 600px;
+}
+
+.instuctionBox_2 h2 {
+  text-align: center;
+  margin: 300px;
+  width: 600px;
+}
+
 .svgContainer {
     position: absolute;
     top: 25%;
@@ -61,8 +83,8 @@
 
 .topButton {
     position: relative;
-    left: 10px;
-    top: 5px;
+    left: -100px;
+    top: 60px;
     color: white;
     background-color: rgb(63, 158, 240);
     font-size: 2rem;

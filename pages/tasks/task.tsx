@@ -3,7 +3,7 @@ import styles from '../../styles/FirstTask.module.scss'
 import MouseTracker from '../../components/mouseTracker'
 
 const Task = (props:any) => {
-  const { onComplete, SVG, cell, target, SVGBlurred, setResponse, currentTask, setTaskComplete } = props
+  const { onComplete, SVG, cell, target, instruction, button_type, SVGBlurred, setResponse, currentTask, setTaskComplete } = props
   
   const [blur, setBlur] = useState(true)
   const [progress, setProgress] = useState(0)
@@ -62,20 +62,19 @@ const Task = (props:any) => {
         setStartTime(Date.now()) 
       }
     }
-
+ 
     const handleTarget = (e) => {
         const svgElement = document.querySelector('svg')
         const interactiveRects = document.querySelectorAll('[data-interactive="true"]')
         interactiveRects.forEach(rect => {
-          rect.removeEventListener('click', handleBlur)
-          rect.removeEventListener('click', handleTarget)
+          rect.removeEventListener('onmousedown', handleBlur)
+          rect.removeEventListener('onmousedown', handleTarget)
         })
-        //console.log('Element found:', e.target)
-       // console.log('Found targets:', foundTargets)
+    
         if (svgElement) {
           let pt = svgElement.createSVGPoint()
           pt.x = e.clientX 
-          pt.y = e.clientY 
+          pt.y = e.clientY
           let svgP = pt.matrixTransform(svgElement.getScreenCTM().inverse())
           const elapsed = Date.now() - startTime 
           setTargetFound(true)
@@ -84,7 +83,9 @@ const Task = (props:any) => {
             [currentTask]: {
               cx: svgP.x,
               cy: svgP.y,
-              response_time: elapsed
+              response_time: elapsed,
+              instruction: instruction,
+              button_type: button_type
             },
           }))
           setCircleX(svgP.x);
@@ -105,7 +106,7 @@ const Task = (props:any) => {
   return (
     <>
     <div className={styles.instruction}>
-      <h1>
+      <h1  style={{fontWeight:'normal', fontSize:'1.6rem', position:'relative', top:'10px', color: 'rgb(90, 90, 90)'}}>
         Task {`${currentTask + 1}`}
       </h1>
      <div style={{display:'flex', flexDirection:"row", alignItems:'center'}}>
@@ -119,17 +120,17 @@ const Task = (props:any) => {
         </button> : 
         ''}
      </div>
-    </div> 
+    </div>  
     <div className={styles.svgContainer}>
       {showFeedback ? 
-        <div>
+        <>
           <SVG/>
           <svg className={styles.overlaySvg} width="1185" height="433" viewBox="0 0 1185 433" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/1999/xlink">
-            <circle cx={circleX} cy={circleY} r="16.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
-            <circle cx={circleX} cy={circleY} r="10.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
-            <circle cx={circleX} cy={circleY} r="4.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
+            <circle cx={circleX + 1} cy={circleY} r="16.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
+            <circle cx={circleX + 1} cy={circleY} r="10.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
+            <circle cx={circleX + 1} cy={circleY} r="4.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
           </svg>
-        </div>
+        </>
       : blur ? <SVGBlurred /> : <SVG />}
       {
       progress == 1 ? <button disabled={buttonDisabled} className={styles.revealButton} onClick={(e) => {

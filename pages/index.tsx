@@ -23,9 +23,18 @@ type Data = {
   feedback?: string;
 };
 
+type TaskType = {
+  SVG: string;
+  SVGBlurred: string;
+  instruction: 'increase' | 'decrease';
+  cell: string;
+  target: string;
+  button_type: 'new' | 'old';
+};
 
 export default function Home() {
 
+  const [isMobile, setIsMobile] = useState(false);
   const [instructionProgress, setInstructionProgress] = useState(0);
   const [currentTask, setCurrentTask] = useState(0);
   const [responsData, setResponseData] = useState({})
@@ -33,102 +42,126 @@ export default function Home() {
   const { likertAnswers} = useCheckboxContext();
   const {likertProgress, feedback, email } = useLikertProgressContext()
 
-  const tasks = [
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const tasks : TaskType[] = [
     {
       SVG: SVG1_new,
       SVGBlurred: SVGBlurred3,
       instruction: 'increase',
       cell: 'A1',
-      target:'A2'
+      target:'A2',
+      button_type: 'new'
     },
     {
       SVG: SVG2_new,
       SVGBlurred: SVGBlurred3,
       instruction: 'increase',
       cell: 'A2',
-      target:'A3'
+      target:'A3',
+      button_type: 'new'
     },
     {
       SVG: SVG3_new,
       SVGBlurred: SVGBlurred3,
       instruction: 'increase',
       cell: 'A3',
-      target:'A4'
+      target:'A4',
+      button_type: 'new'
     },
     {
       SVG: SVG2_new,
       SVGBlurred: SVGBlurred3,
       instruction: 'decrease',
       cell: 'A2',
-      target:'A1'
+      target:'A1',
+      button_type: 'new'
     },
     {
       SVG: SVG3_new,
       SVGBlurred: SVGBlurred3,
       instruction: 'decrease',
       cell: 'A3',
-      target:'A2'
+      target:'A2',
+      button_type: 'new'
     },
     {
       SVG: SVG4_new,
       SVGBlurred: SVGBlurred3,
       instruction: 'decrease',
       cell: 'A4',
-      target:'A3'
+      target:'A3',
+      button_type: 'new'
     },
     {
       SVG: SVG1_old,
       SVGBlurred: SVGBlurred3,
       instruction: 'increase',
       cell: 'A1',
-      target:'A2'
+      target:'A2',
+      button_type: 'old'
     },
     {
       SVG: SVG2_old,
       SVGBlurred: SVGBlurred3,
       instruction: 'increase',
       cell: 'A2',
-      target:'A3'
+      target:'A3',
+      button_type: 'old'
     },
     {
       SVG: SVG3_old,
       SVGBlurred: SVGBlurred3,
       instruction: 'increase',
       cell: 'A3',
-      target:'A4'
+      target:'A4',
+      button_type: 'old'
     },
     {
       SVG: SVG2_old,
       SVGBlurred: SVGBlurred3,
       instruction: 'decrease',
       cell: 'A2',
-      target:'A1'
+      target:'A1',
+      button_type: 'old'
     },
     {
       SVG: SVG3_old,
       SVGBlurred: SVGBlurred3,
       instruction: 'decrease',
       cell: 'A3',
-      target:'A2'
+      target:'A2',
+      button_type: 'old'
     },
     {
       SVG: SVG4_old,
       SVGBlurred: SVGBlurred3,
       instruction: 'decrease',
       cell: 'A4',
-      target:'A3'
+      target:'A3',
+      button_type: 'old'
     },
   ];
-  console.log(taskComplete)
+
   const handleTaskComplete = () => {
     setTimeout(() => {
       setCurrentTask((prevTask) => prevTask + 1);
     }, 1000);  
   }
-  console.log('LIKERT ANSWERS: '+JSON.stringify(likertAnswers))
+
   useEffect(() => {
-    console.log('RESPONSE: '+JSON.stringify(responsData));
-    console.log(taskComplete)
     if(taskComplete) {
       let data : Data = {
         task: "Task description",
@@ -161,12 +194,19 @@ export default function Home() {
           .catch(err => {
             console.log(err)
           });
-      }
-      
+      }  
     }
-}, [responsData, taskComplete, feedback, email, likertProgress]);
+  }, [responsData, taskComplete, feedback, email, likertProgress]);
+
+    if(isMobile) {
+    return (
+      <h1 style={{margin:'100px auto auto auto', textAlign:'center'}}>
+        You can complete the experiment only on desktop.
+      </h1>
+    );
+  }
   
-  return (
+  return ( 
     <div>
     {
       instructionProgress < 4 ? 
