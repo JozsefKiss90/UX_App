@@ -3,7 +3,7 @@ import resets from '../../components/_resets.module.css';
 
 function Experience() {
 
-  const likertText = {
+  const likertText : any = {
       0 : {
         question :  (
           <div className="question-container">

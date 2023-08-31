@@ -4,14 +4,12 @@ interface CheckboxContextType {
   checkboxStates: boolean[][];
   handleCheckboxChange: (questionIndex: number, checkboxIndex: number) => void;
   likertAnswers: { [key: number]: number };
-  setLikertAnswers: (newAnswers: { [key: number]: number }) => void;
 }
 
 const defaultValue: CheckboxContextType = {
   checkboxStates: [],
   handleCheckboxChange: () => {},
   likertAnswers: {},
-  setLikertAnswers: ()=>{}
 };
 
 const CheckboxContext = createContext<CheckboxContextType>(defaultValue);
@@ -20,7 +18,7 @@ export function useCheckboxContext() {
   return useContext(CheckboxContext);
 }
 
-export function CheckboxProvider({ children }) {
+export function CheckboxProvider({ children } : any) {
 
     const [checkboxStates, setCheckboxStates] = useState(() => Array.from({ length: 4 }, () => new Array(5).fill(false)));
     const [likertAnswers, setLikertAnswers] = useState({})

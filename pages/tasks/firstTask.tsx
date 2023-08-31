@@ -52,18 +52,18 @@ const FirstTask = (props : any) => {
     }, [targetFound]);
     
 
-    const handleBlur = (e) => {
+    const handleBlur = () => {
       setBlur(!blur);
     };
 
-    const handleProgress = (e) => {
+    const handleProgress = () => {
       setProgress(progress + 1);
       if(progress == 1) { 
         setStartTime(Date.now());
       }
     };
 
-    const handleTarget = (e) => {
+    const handleTarget = (e: any) => {
       console.log('Element found:', e.target);
       console.log('Target coordinates:', e.clientX, e.clientY);  
       const elapsed = Date.now() - startTime;
@@ -80,13 +80,13 @@ const FirstTask = (props : any) => {
       <div className={styles.svgContainer}>
         <MouseTracker/>
         {showFeedback ? <MySvgFeedback /> : blur ? <MySvgBlurred /> : <MySvg />}
-        {progress == 0 ? <button className={styles.centeredButton} onClick={(e) => {
-          handleProgress(e);
+        {progress == 0 ? <button className={styles.centeredButton} onClick={() => {
+          handleProgress();
         }}>
           Understood
         </button> : 
-        progress == 1 ? <button className={styles.centeredButton} onClick={(e) => {
-          handleBlur(e); handleProgress(e);
+        progress == 1 ? <button className={styles.centeredButton} onClick={() => {
+          handleBlur(); handleProgress();
         }}>
           Reveal
         </button> : ''}

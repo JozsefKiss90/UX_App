@@ -2,7 +2,7 @@ import styles from '../../styles/FirstTask.module.scss'
 
 const Instruction2 = ({ progress, setProgress } : any) => {
 
-  const handleProgress = (e) => {
+  const handleProgress = () => {
     setProgress(progress + 1);
   };
 

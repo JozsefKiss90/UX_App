@@ -51,11 +51,11 @@ const Task = (props:any) => {
       return () => clearTimeout(timeoutId)
     }, [targetFound])
 
-    const handleBlur = (e) => {
+    const handleBlur = () => {
       setBlur(!blur)
     }
 
-    const handleProgress = (e) => {
+    const handleProgress = () => {
       setProgress(progress + 1)
       if(progress == 1) { 
         setButtonDisabled(true);
@@ -63,9 +63,9 @@ const Task = (props:any) => {
       }
     }
  
-    const handleTarget = (e) => {
-        const svgElement = document.querySelector('svg')
-        const interactiveRects = document.querySelectorAll('[data-interactive="true"]')
+    const handleTarget = (e:any) => {
+      const svgElement = document.querySelector('svg') as SVGSVGElement | null;
+      const interactiveRects = document.querySelectorAll('[data-interactive="true"]')
         interactiveRects.forEach(rect => {
           rect.removeEventListener('onmousedown', handleBlur)
           rect.removeEventListener('onmousedown', handleTarget)
@@ -75,7 +75,7 @@ const Task = (props:any) => {
           let pt = svgElement.createSVGPoint()
           pt.x = e.clientX 
           pt.y = e.clientY
-          let svgP = pt.matrixTransform(svgElement.getScreenCTM().inverse())
+          let svgP = pt.matrixTransform(svgElement.getScreenCTM()?.inverse());
           const elapsed = Date.now() - startTime 
           setTargetFound(true)
           setResponse((prevResponse : any) => ({
@@ -114,7 +114,7 @@ const Task = (props:any) => {
         Make {`${cell}`} (selected) similar to {`${target}`} with one click  
         </h1>
         {progress == 0 ? <button className={styles.topButton} style={{}} onClick={(e) => {
-          handleProgress(e)
+          handleProgress()
         }}>
           Understood
         </button> : 
@@ -125,7 +125,7 @@ const Task = (props:any) => {
       {showFeedback ? 
         <>
           <SVG/>
-          <svg className={styles.overlaySvg} width="1185" height="433" viewBox="0 0 1185 433" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/1999/xlink">
+          <svg className={styles.overlaySvg} width="1185" height="433" viewBox="0 0 1185 433" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx={circleX + 1} cy={circleY} r="16.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
             <circle cx={circleX + 1} cy={circleY} r="10.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
             <circle cx={circleX + 1} cy={circleY} r="4.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
@@ -134,7 +134,7 @@ const Task = (props:any) => {
       : blur ? <SVGBlurred /> : <SVG />}
       {
       progress == 1 ? <button disabled={buttonDisabled} className={styles.revealButton} onClick={(e) => {
-        handleBlur(e); handleProgress(e)
+        handleBlur(); handleProgress()
       }}>
         Reveal
       </button> : ''}

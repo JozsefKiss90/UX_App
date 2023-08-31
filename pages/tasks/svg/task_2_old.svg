@@ -9,7 +9,7 @@
 <rect data-interactive="true" x="585" y="102" width="553" height="44" fill="#EDF2FA" fill-opacity="0.85"/>
 <rect data-interactive="true" x="605" y="304" width="13" height="22" fill="white"/>
 </g>
-<defs>
+<defs> 
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_312_1129" transform="scale(0.00129366 0.0037037)"/>
 </pattern>

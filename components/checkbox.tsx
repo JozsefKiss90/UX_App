@@ -2,7 +2,7 @@
 import classes from './Checkbox.module.css';
 import resets from './_resets.module.css';
 
-const Checkbox = ({ className, isChecked, onChange }) => (
+const Checkbox = ({ className, isChecked, onChange } : any) => (
   <input
     className={`${resets.storybrainResets} ${className} `}
     type="checkbox"

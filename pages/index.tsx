@@ -206,7 +206,7 @@ export default function Home() {
     );
   }
   
-  return ( 
+  return (  
     <div>
     {
       instructionProgress < 4 ? 
