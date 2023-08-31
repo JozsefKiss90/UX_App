@@ -12,7 +12,7 @@ const Instruction2 = ({ progress, setProgress } : any) => {
         Please answer a few questions about your experience with google sheets.
       </h2>
       <button className={styles.centeredButton} onClick={(e) => {
-        handleProgress(e);
+        handleProgress();
       }}>
         Next
       </button>
