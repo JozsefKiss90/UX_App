@@ -2,15 +2,15 @@ import Instruction from './tasks/instruction'
 import Instruction2 from './tasks/instruction_2';
 import {useEffect, useState } from 'react'
 import Task from './tasks/task'
-import SVG1_new from './tasks/svg/task_A1_0.svg';
-import SVG2_new from './tasks/svg/task_A2_1.svg';
-import SVG3_new from './tasks/svg/task_A3_2.svg';
-import SVG4_new from './tasks/svg/task_A4_3.svg';
-import SVG1_old from './tasks/svg/task_1_old.svg';
-import SVG2_old from './tasks/svg/task_2_old.svg';
-import SVG3_old from './tasks/svg/task_3_old.svg';
-import SVG4_old from './tasks/svg/task_4_old.svg';
-import SVGBlurred3 from './tasks/svg/task_3_blur.svg'; 
+import { ReactComponent as SVG1_new } from './tasks/svg/task_A1_0.svg';
+import { ReactComponent as  SVG2_new  } from './tasks/svg/task_A2_1.svg';
+import { ReactComponent as  SVG3_new  } from './tasks/svg/task_A3_2.svg';
+import { ReactComponent as  SVG4_new  } from './tasks/svg/task_A4_3.svg';
+import { ReactComponent as  SVG1_old  } from './tasks/svg/task_1_old.svg';
+import { ReactComponent as  SVG2_old  } from './tasks/svg/task_2_old.svg';
+import { ReactComponent as  SVG3_old  } from './tasks/svg/task_3_old.svg';
+import { ReactComponent as  SVG4_old  } from './tasks/svg/task_4_old.svg';
+import { ReactComponent as  SVGBlurred3  } from './tasks/svg/task_3_blur.svg'; 
 import { useCheckboxContext } from '../context/checkboxcontext';
 import Experience from './tasks/experience';
 import { useLikertProgressContext } from '../context/likertProgressContext'; 
@@ -24,8 +24,8 @@ type Data = {
 };
 
 type TaskType = {
-  SVG: string;
-  SVGBlurred: string;
+  SVG: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  SVGBlurred: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   instruction: 'increase' | 'decrease';
   cell: string;
   target: string;
