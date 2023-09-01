@@ -1,19 +1,17 @@
 import Instruction from './tasks/instruction'
 import Instruction2 from './tasks/instruction_2';
-import {useEffect, useState } from 'react'
+import {useEffect, useState, useRef, FunctionComponent } from 'react'
 import Task from './tasks/task'
-import SVG1_new from './tasks/svg/task_A1_0.svg';
-import SVG2_new from './tasks/svg/task_A2_1.svg';
-import SVG3_new from './tasks/svg/task_A3_2.svg';
+/*import SVG3_new from './tasks/svg/task_A3_2.svg';
 import SVG4_new from './tasks/svg/task_A4_3.svg';
 import SVG1_old from './tasks/svg/task_1_old.svg';
 import SVG2_old from './tasks/svg/task_2_old.svg';
 import SVG3_old from './tasks/svg/task_3_old.svg';
-import SVG4_old from './tasks/svg/task_4_old.svg';
-import SVGBlurred3 from './tasks/svg/task_3_blur.svg'; 
+import SVG4_old from './tasks/svg/task_4_old.svg';*/
 import { useCheckboxContext } from '../context/checkboxcontext';
 import Experience from './tasks/experience';
 import { useLikertProgressContext } from '../context/likertProgressContext'; 
+import React from 'react';
 
 type Data = {
   task: string;
@@ -24,8 +22,8 @@ type Data = {
 };
 
 type TaskType = {
-  SVG: string;
-  SVGBlurred: string;
+  SVG: FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  SVGBlurred: FunctionComponent<React.SVGProps<SVGSVGElement>>;
   instruction: 'increase' | 'decrease';
   cell: string;
   target: string;
@@ -41,6 +39,26 @@ export default function Home() {
   const [taskComplete, setTaskComplete] = useState(false)
   const { likertAnswers} = useCheckboxContext();
   const {likertProgress, feedback, email } = useLikertProgressContext()
+  const svgRefs : any = useRef({});
+  const [svgsLoaded, setSvgsLoaded] = useState(false);
+
+  useEffect(() => {
+    const loadSVGs = async () => {
+      const SVG1_new = await import('./tasks/svg/task_A1_0.svg');
+      const SVG2_new = await import('./tasks/svg/task_A2_1.svg');
+      const SVGBlurred3 = await import('./tasks/svg/task_3_blur.svg');
+      svgRefs.current = {
+        SVG1_new: SVG1_new.default,
+        SVG2_new: SVG2_new.default,
+        SVGBlurred3: SVGBlurred3.default
+      };
+  
+      setSvgsLoaded(true);  
+    };
+  
+    loadSVGs();
+  }, []);
+  
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
@@ -56,6 +74,24 @@ export default function Home() {
     };
   }, []);
 
+  const tasks : TaskType[] =  svgsLoaded ? [
+    {
+      SVG: svgRefs.current.SVG1_new,
+      SVGBlurred: svgRefs.current.SVGBlurred3,
+      instruction: 'increase',
+      cell: 'A1',
+      target:'A2',
+      button_type: 'new'
+    },
+    {
+      SVG: svgRefs.current.SVG2_new,
+      SVGBlurred: svgRefs.current.SVGBlurred3,
+      instruction: 'increase',
+      cell: 'A2',
+      target:'A3',
+      button_type: 'new'
+    }
+  ] : [];
 
   const handleTaskComplete = () => {
     setTimeout(() => {
@@ -107,14 +143,20 @@ export default function Home() {
       </h1>
     );
   }
+
+  if (!svgsLoaded) {
+    return <div>Loading...</div>;  
+  }
   
-  return (  
+
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>
     <div>
     {
       instructionProgress < 4 ? 
         <Instruction progress={instructionProgress} setProgress={setInstructionProgress} />
-      : instructionProgress == 4 && currentTask < 8 ? 
-        <Task currentTask={currentTask} setResponse={setResponseData} response={responsData}
+      : instructionProgress == 4 && currentTask < tasks.length ? 
+        <Task {...tasks[currentTask]} currentTask={currentTask} setResponse={setResponseData} response={responsData}
          onComplete={handleTaskComplete} setTaskComplete={setTaskComplete}/>
       : taskComplete && instructionProgress == 4 ? 
         <Instruction2 progress={instructionProgress} setProgress={setInstructionProgress}/>
@@ -123,6 +165,7 @@ export default function Home() {
       : null
     }
   </div>
+  </React.Suspense>  
   )
 }
 

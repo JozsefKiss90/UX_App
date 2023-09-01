@@ -20,6 +20,7 @@
     "snapsvg": "^0.5.1"
   },
   "devDependencies": {
+    "@babel/register": "^7.22.5",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.4.4",
     "@types/react": "^18.2.15",

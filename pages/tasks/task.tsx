@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react'
 import styles from '../../styles/FirstTask.module.scss'
-import MouseTracker from '../../components/mouseTracker'
+import SVG1_new from '../tasks/svg/task_A1_0.svg';
+import SVG2_new from '../tasks/svg/task_A2_1.svg';
+import SVG3_new from '../tasks/svg/task_A3_2.svg';
+import SVG4_new from '../tasks/svg/task_A4_3.svg';
+import SVG1_old from '../tasks/svg/task_1_old.svg';
+import SVG2_old from '../tasks/svg/task_2_old.svg';
+import SVG3_old from '../tasks/svg/task_3_old.svg';
+import SVG4_old from '../tasks/svg/task_4_old.svg';
+import SVGBlurred3 from '../tasks/svg/task_3_blur.svg'; 
 
 const Task = (props:any) => {
-  const { onComplete, SVG, cell, target, instruction, button_type, SVGBlurred, setResponse, currentTask, setTaskComplete } = props
+  const { onComplete, cell, target, instruction, button_type, setResponse, currentTask, setTaskComplete } = props
   
   const [blur, setBlur] = useState(true)
   const [progress, setProgress] = useState(0)
@@ -14,21 +22,23 @@ const Task = (props:any) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [circleX, setCircleX] = useState(0);
   const [circleY, setCircleY] = useState(0);
- 
+  const tasks = [SVG1_new, SVG2_new, SVG3_new, SVG4_new, SVG1_old, SVG2_old, SVG3_old, SVG4_old]
+  const SVGBlurred = SVGBlurred3
+    const CurrentSvg : any= tasks[currentTask]
 
     useEffect(() => {
       const interactiveRects = document.querySelectorAll('[data-interactive="true"]')
       if(!blur) {
         interactiveRects.forEach(rect => {
           rect.setAttribute('style', 'cursor: pointer')
-          rect.addEventListener('click', handleTarget)
+          rect.addEventListener('mousedown', handleTarget)
         })
       }
       setButtonDisabled(false)
       return () => {
         interactiveRects.forEach(rect => {
-          rect.removeEventListener('click', handleBlur)
-          rect.removeEventListener('click', handleTarget)
+          rect.removeEventListener('mousedown', handleBlur)
+          rect.removeEventListener('mousedown', handleTarget)
         })
       }
     }, [blur])
@@ -38,7 +48,7 @@ const Task = (props:any) => {
         setProgress(0)
         setTargetFound(false)
         setShowFeedback(false)
-      }, [SVG])
+      }, [tasks[currentTask]])
 
     useEffect(() => {
       let timeoutId:  NodeJS.Timeout | undefined
@@ -67,8 +77,8 @@ const Task = (props:any) => {
       const svgElement = document.querySelector('svg') as SVGSVGElement | null;
       const interactiveRects = document.querySelectorAll('[data-interactive="true"]')
         interactiveRects.forEach(rect => {
-          rect.removeEventListener('onmousedown', handleBlur)
-          rect.removeEventListener('onmousedown', handleTarget)
+          rect.removeEventListener('mousedown', handleBlur);
+          rect.removeEventListener('mousedown', handleTarget);          
         })
     
         if (svgElement) {
@@ -124,14 +134,14 @@ const Task = (props:any) => {
     <div className={styles.svgContainer}>
       {showFeedback ? 
         <>
-          <SVG/>
+          <CurrentSvg/>
           <svg className={styles.overlaySvg} width="1185" height="433" viewBox="0 0 1185 433" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx={circleX + 1} cy={circleY} r="16.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
             <circle cx={circleX + 1} cy={circleY} r="10.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
             <circle cx={circleX + 1} cy={circleY} r="4.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
           </svg>
         </>
-      : blur ? <SVGBlurred /> : <SVG />}
+      : blur ? <SVGBlurred /> : <CurrentSvg />}
       {
       progress == 1 ? <button disabled={buttonDisabled} className={styles.revealButton} onClick={(e) => {
         handleBlur(); handleProgress()
