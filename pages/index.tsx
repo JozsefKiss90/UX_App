@@ -1,19 +1,12 @@
 import Instruction from './tasks/instruction'
 import Instruction2 from './tasks/instruction_2';
-import {useEffect, useState } from 'react'
+import {SetStateAction, useEffect, useState } from 'react'
 import Task from './tasks/task'
-import SVG1_new from './tasks/svg/task_A1_0.svg';
-import SVG2_new from './tasks/svg/task_A2_1.svg';
-import SVG3_new from './tasks/svg/task_A3_2.svg';
-import SVG4_new from './tasks/svg/task_A4_3.svg';
-import SVG1_old from './tasks/svg/task_1_old.svg';
-import SVG2_old from './tasks/svg/task_2_old.svg';
-import SVG3_old from './tasks/svg/task_3_old.svg';
-import SVG4_old from './tasks/svg/task_4_old.svg';
-import SVGBlurred3 from './tasks/svg/task_3_blur.svg'; 
 import { useCheckboxContext } from '../context/checkboxcontext';
 import Experience from './tasks/experience';
 import { useLikertProgressContext } from '../context/likertProgressContext'; 
+import styles from '../styles/Home.module.scss'
+import TextField from '@mui/material/TextField';
 
 type Data = {
   task: string;
@@ -23,14 +16,6 @@ type Data = {
   feedback?: string;
 };
 
-type TaskType = {
-  SVG: string;
-  SVGBlurred: string;
-  instruction: 'increase' | 'decrease';
-  cell: string;
-  target: string;
-  button_type: 'new' | 'old';
-};
 
 export default function Home() {
 
@@ -41,6 +26,8 @@ export default function Home() {
   const [taskComplete, setTaskComplete] = useState(false)
   const { likertAnswers} = useCheckboxContext();
   const {likertProgress, feedback, email } = useLikertProgressContext()
+  const [userEmail, setUserEmail]  = useState('')
+  const [isChecked, setIsChecked] = useState(false)
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
@@ -100,11 +87,86 @@ export default function Home() {
     }
   }, [responsData, taskComplete, feedback, email, likertProgress]);
 
-    if(isMobile) {
+  function handleUserEmail(e: { target: { value: SetStateAction<string>; }; }) {
+    setUserEmail(e.target.value)
+  }
+
+  function handleChecked() {
+    setIsChecked(!isChecked)
+  }
+  console.log(isChecked)
+  function sendUserEmail() {
+    let data : any = {
+      email: userEmail,
+      update: isChecked,
+    };
+    
+    let options = {
+      method :'POST',
+      headers : {'Content-type' :'application/json'},
+      body : JSON.stringify(data),
+    }
+    fetch('/api/user_email', options)
+    .then(res => res.json())
+    .catch(err => console.log(err))
+  }
+
+
+  if(isMobile) {
     return (
-      <h1 style={{margin:'100px auto auto auto', textAlign:'center'}}>
-        You can complete the experiment only on desktop.
-      </h1>
+     <div className={styles.mobileTextContainer}>
+       <p className={styles.mobileText} style={{textAlign:'left'}}>
+        It seems that you are browsing from mobile but the experiment runs <strong>only in desktop.</strong>
+      </p>
+      <p className={styles.mobileText2} >
+        Send link to finish later:
+      </p>
+      <div className={styles.textField}>
+      <TextField
+        type="text"
+        name=""
+        id=""
+        onChange={handleUserEmail}
+        label="Your e-mail address"
+        sx={{
+          backgroundColor: 'rgb(229, 239, 246)',
+          color: 'black',
+          width: '100%',
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '10px',
+          },
+          '& .MuiOutlinedInput-input': {
+            paddingTop: '8px',
+            paddingBottom: '8px',
+          },
+          '& .MuiInputLabel-outlined': {
+            top: '50%',
+            transform: 'translate(14px, -50%)',  // Center the label vertically in its default state
+          },
+          '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
+            transform: 'translate(14px, -20px) scale(0.75)',  // Adjust for the shrunk label position and size
+          },
+        }}
+      />
+      </div>
+      <div className={styles.update}>
+        <p className={styles.mobileText3}>
+          Also subsrcibe to updates about the project.
+        </p>
+        <input
+          style={{marginRight:'20px', width:'50px', height:'50px'}}
+          type="checkbox"
+          checked={isChecked}
+          onChange={handleChecked} 
+        />
+
+      </div>
+      <button className={styles.button} onClick={sendUserEmail}>
+        <p>
+          Send
+        </p>
+      </button> 
+     </div>
     );
   }
   

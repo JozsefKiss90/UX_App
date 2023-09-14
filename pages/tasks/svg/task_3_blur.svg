@@ -4,41 +4,41 @@
       <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
     </filter>
   </defs>
-<g clip-path="url(#clip0_310_140)">
+<g clip-path="url(#clip0_310_140)" filter="url(#blurMe)">
 <rect width="1257.14" height="433" fill="white"/> 
-<rect x="-0.0742188" y="-0.888672" width="1239.66" height="433" fill="url(#pattern0)"  filter="url(#blurMe)"/>
+<rect x="-0.0742188" y="-0.888672" width="1239.66" height="433" fill="url(#pattern0)"  />
 <rect x="309" y="377" width="769" height="37" fill="#F9FBFD" fill-opacity="0.8"/>
 <rect x="34" width="1128" height="72" fill="#F9FBFD" fill-opacity="0.8"/>
 <rect y="92" width="434" height="44" fill="#EDF2FA" fill-opacity="0.85"/>
 <rect x="630" y="92" width="411" height="44" fill="#EDF2FA" fill-opacity="0.85"/>
 <path d="M248.926 171.111H324.926V189.111H248.926V171.111Z" fill="white"/>
-<rect x="660.2" y="82.9727" width="593.725" height="82.8606" fill="url(#pattern1)" filter="url(#blurMe)"/>
-<rect x="491.869" y="92.7578" width="87.4277" height="59.3725" fill="url(#pattern2)" filter="url(#blurMe)"/>
-<rect x="579.297" y="92.7578" width="89.385" height="59.3725" fill="url(#pattern3)" filter="url(#blurMe)"/>
-<rect x="541.456" y="108.418" width="25.4454" height="28.7076" fill="url(#pattern4)" filter="url(#blurMe)"/>
-<rect width="9.78668" height="9.13424" transform="matrix(1 0 0 -1 547.328 133.863)" fill="url(#pattern5)" filter="url(#blurMe)"/>
-<rect x="566.901" y="133.863" width="9.78668" height="9.13424" transform="rotate(180 566.901 133.863)" fill="url(#pattern6)" filter="url(#blurMe)"/>
+<rect x="660.2" y="82.9727" width="593.725" height="82.8606" fill="url(#pattern1)" />
+<rect x="491.869" y="92.7578" width="87.4277" height="59.3725" fill="url(#pattern2)" />
+<rect x="579.297" y="92.7578" width="89.385" height="59.3725" fill="url(#pattern3)" />
+<rect x="541.456" y="108.418" width="25.4454" height="28.7076" fill="url(#pattern4)" />
+<rect width="9.78668" height="9.13424" transform="matrix(1 0 0 -1 547.328 133.863)" fill="url(#pattern5)" />
+<rect x="566.901" y="133.863" width="9.78668" height="9.13424" transform="rotate(180 566.901 133.863)" fill="url(#pattern6)" />
 <rect x="566.9" y="113.637" width="12.3965" height="17.616" fill="#EDF2FA"/>
 <rect x="579.297" y="113.637" width="35.2321" height="17.616" fill="#EDF2FA"/>
-<rect x="594.304" y="103.197" width="10.4391" height="38.4943" fill="url(#pattern7)" filter="url(#blurMe)"/>
+<rect x="594.304" y="103.197" width="10.4391" height="38.4943" fill="url(#pattern7)" />
 <rect x="538.846" y="110.375" width="30.6649" height="24.1405" fill="#EDF2FA"/>
-<rect x="551.242" y="113.637" width="15.6587" height="15.6587" fill="url(#pattern8)" filter="url(#blurMe)"/>
+<rect x="551.242" y="113.637" width="15.6587" height="15.6587" fill="url(#pattern8)" />
 <line x1="579.949" y1="111.027" x2="579.949" y2="134.515" stroke="#C7C7C7" stroke-width="1.30489"/>
-<rect x="491.926" y="92.1113" width="86.8791" height="59" fill="url(#pattern9)" filter="url(#blurMe)"/>
-<rect x="578.805" y="92.1113" width="88.8242" height="59" fill="url(#pattern10)" filter="url(#blurMe)"/>
+<rect x="491.926" y="92.1113" width="86.8791" height="59" fill="url(#pattern9)" />
+<rect x="578.805" y="92.1113" width="88.8242" height="59" fill="url(#pattern10)" />
 <rect x="541.2" y="107.672" width="25.2857" height="28.5275" fill="url(#pattern11)"/>
-<rect width="9.72527" height="9.07692" transform="matrix(1 0 0 -1 547.035 132.957)" fill="url(#pattern12)" filter="url(#blurMe)"/>
-<rect x="566.486" y="132.957" width="9.72527" height="9.07692" transform="rotate(180 566.486 132.957)" fill="url(#pattern13)" filter="url(#blurMe)"/>
-<rect x="566.486" y="112.859" width="12.3187" height="17.5055" fill="#EDF2FA" filter="url(#blurMe)"/>
-<rect x="578.805" y="112.859" width="35.011" height="17.5055" fill="#EDF2FA" filter="url(#blurMe)"/>
+<rect width="9.72527" height="9.07692" transform="matrix(1 0 0 -1 547.035 132.957)" fill="url(#pattern12)" />
+<rect x="566.486" y="132.957" width="9.72527" height="9.07692" transform="rotate(180 566.486 132.957)" fill="url(#pattern13)" />
+<rect x="566.486" y="112.859" width="12.3187" height="17.5055" fill="#EDF2FA" />
+<rect x="578.805" y="112.859" width="35.011" height="17.5055" fill="#EDF2FA" />
 <line x1="579.453" y1="110.266" x2="579.453" y2="133.606" stroke="#C7C7C7" stroke-width="1.2967"/>
-<rect x="592.953" y="102.486" width="14.9121" height="40.1978" fill="url(#pattern14)" filter="url(#blurMe)"/>
+<rect x="592.953" y="102.486" width="14.9121" height="40.1978" fill="url(#pattern14)" />
 <rect x="538.606" y="109.617" width="30.4725" height="23.989" fill="#EDF2FA"/>
-<rect x="546.552" y="113.506" width="14.9121" height="15.5604" fill="url(#pattern15)" filter="url(#blurMe)"/>
-<rect x="560.816" y="113.506" width="9.07692" height="15.5604" fill="url(#pattern16)" filter="url(#blurMe)"/>
+<rect x="546.552" y="113.506" width="14.9121" height="15.5604" fill="url(#pattern15)" />
+<rect x="560.816" y="113.506" width="9.07692" height="15.5604" fill="url(#pattern16)" />
 <rect x="631.926" y="130.111" width="20.7473" height="18.1538" fill="#EDF2FA" fill-opacity="0.85"/>
-<rect x="589.926" y="108.111" width="20" height="26" fill="url(#pattern17)" filter="url(#blurMe)"/>
-<rect x="605" y="304" width="13" height="22" fill="white" filter="url(#blurMe)"/>
+<rect x="589.926" y="108.111" width="20" height="26" fill="url(#pattern17)" />
+<rect x="605" y="304" width="13" height="22" fill="white" />
 </g>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">

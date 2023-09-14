@@ -20,8 +20,8 @@ const Feedback = () => {
         autoComplete="off"
       >
       <h2 style={{ margin: 0, color:'#303030', paddingBottom:'10px', fontWeight:'normal' }}>
-        Any feedback on the experiment are welcomed! 
-        <span style={{ fontWeight: 'bold' }}> (optional)</span>
+        Any feedback on the experiment are welcomed!&nbsp; 
+        <span > <i> (optional)</i></span>
       </h2>
         <div>
           <TextField
@@ -53,8 +53,8 @@ const Feedback = () => {
         autoComplete="off"
       >
         <h2 style={{ margin: 0,  color:'#303030', paddingBottom:'10px', marginTop:'30px', fontWeight:'normal'  }}>
-          Email for the results and other experiments (less than 1 per month)  
-          <span style={{ fontWeight: 'bold' }}> (optional)</span>
+          Email for the results and other experiments (less than 1 per month)&nbsp;  
+          <span > <i> (optional)</i></span>
         </h2>
         <div>
           <TextField
@@ -68,7 +68,7 @@ const Feedback = () => {
               borderRadius: '10px',
               backgroundColor: 'lightblue',
               '& .MuiOutlinedInput-root': {
-                borderRadius: '10px',
+                borderRadius: '10px', 
               },
             }}
           />

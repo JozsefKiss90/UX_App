@@ -108,6 +108,69 @@
   margin-left: 0.5rem;
 }
 
+.mobileText{
+  font-size: 1.3rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+  Bitstream Vera Sans Mono, Courier New, monospace;
+  padding: 5px 20px;
+}
+
+.mobileText2{
+  font-size: 1.4rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+  Bitstream Vera Sans Mono, Courier New, monospace;
+  padding: 5px 20px;
+  font-weight: bold;
+}
+
+.mobileText3{
+  font-size: 1rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+  Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+
+.mobileTextContainer{
+  margin-top: 30px;
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.update{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 5px 20px;
+  margin-top: 10px;
+}
+
+.textField{
+  margin-top:0px;
+}
+
+.button {
+    display: flex;
+  justify-content: center;
+  width: 125px;
+  height: 60px;
+  align-items: center;
+  outline-offset: -5px;
+  border-radius: 56px;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(9, 159, 252);
+  margin-top: 10px;
+}
+
+.button p {
+  font-size: 1.2rem;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
@@ -118,7 +181,7 @@
 @media (prefers-color-scheme: dark) {
   .card,
   .footer {
-    border-color: #222;
+    border-color: rgb(229, 239, 246);
   }
   .code {
     background: #111;

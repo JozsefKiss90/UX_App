@@ -117,32 +117,35 @@
     position: absolute;
     display: flex;
     justify-content: center;
-    align-items: center;
     left: 100px;
-    top: 510px;
-    width: 180px;
-    height: 90px;
-    align-items: flex-start;
+    top: 500px;
+    width: 205px;
+    height: 104px;
+    align-items: center;
     outline-offset: -5px;
+    outline: solid 5px #000000;
     border-radius: 56px;
     overflow: hidden;
     cursor: pointer;
-    color: rgb(0, 0, 0);
-    background-color: rgb(190, 190, 190);
+    color: white;
+    background-color: rgb(255, 255, 255);
   }
 
   .backButton {
     color: #000000;
-    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 53.6385px;
     font-family: IBM Plex Mono, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
       'Liberation Sans', sans-serif;
-    position: absolute;
-    left: 10px;
+    left: 38px;
     top: 17px;
     width: min-content; 
     height: min-content;
     white-space: nowrap;
     flex-direction: column;
+    margin: auto auto 20px auto;
   }
 
   .neverUsed { 

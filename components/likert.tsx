@@ -99,11 +99,11 @@ function Likert({likertText}: LikertProps) {
           {likertText[likertProgress].question}
         </div>
         <button className={enableButton ? classes.buttonEnabled : classes.buttonDisabled} onClick={()=>{handleLikertProgress()}}>
-          <div className={enableButton ? classes.nextEnabled : classes.nextDisabled}>Next</div>
+          <div className={enableButton ? classes.nextEnabled : classes.nextDisabled}>Next&gt;</div>
         </button>
         {likertProgress > 0 ? 
           <button className={classes.backButtonEnabled} onClick={()=>{handleBackProgress()}}>
-            <div  className={classes.backButton}>&lt; Back</div>
+            <div  className={classes.backButton}>&lt;Back</div>
         </button>
         : ""
       }
@@ -170,7 +170,7 @@ function Likert({likertText}: LikertProps) {
           </button>
           {likertProgress > 0 && (
             <button className={classes.backButtonEnabled} onClick={handleBackProgress}>
-              <div className={classes.backButton}>&lt; Back</div>
+              <div className={classes.backButton}>&lt;Back</div>
             </button>
           )}
         </>
