@@ -12,7 +12,7 @@ const Thankyou = () => {
                     Bálint K. &nbsp;
                 </p>
                 <p style={{fontSize:'1.5rem', marginTop: '40px'}}>
-                    <a style={{color: '#b300ff'}} href="">(designer)</a>
+                    <a style={{color: '#b300ff'}} href="">(idea, experiment design)</a>
                 </p>
             </div>
             <div style={{display:"flex", flexDirection:"row"}}>
@@ -21,7 +21,7 @@ const Thankyou = () => {
                     József K. &nbsp;
                 </p>
                 <p style={{fontSize:'1.5rem', marginTop: '40px'}}>
-                    <a style={{color: '#b300ff'}} href="">(builder)</a>
+                    <a style={{color: '#b300ff'}} href="">(front end dev, experiment design)</a>
                 </p>
             </div>
         </div>

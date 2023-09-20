@@ -29,14 +29,62 @@ const Task = (props:any) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [circleX, setCircleX] = useState(0);
   const [circleY, setCircleY] = useState(0);
-  const tasks = [SVG1_new, SVG2_new, SVG3_new, SVG4_new, SVG1_old, SVG2_old, SVG3_old, SVG4_old]
+
+  const tasks = [
+    SVG3_new, SVG1_old, SVG4_new, SVG3_old,
+    SVG2_new, SVG2_old, SVG4_new, SVG3_new,
+    SVG2_new, SVG1_new, SVG2_new, SVG3_old
+];
+
   const SVGBlurred = SVGBlurred3
   const CurrentSvg : any= tasks[currentTask]
 
-  const tasksData : tasksData[] = [
+  const tasksData : tasksData[]= [
+    {
+      instruction: 'decrease',
+      cell: 'A3',
+      target:'A2',
+      button_type: 'new'
+    },
     {
       instruction: 'increase',
       cell: 'A1',
+      target:'A2',
+      button_type: 'old'
+    },
+    {
+      instruction: 'decrease',
+      cell: 'A4',
+      target:'A3',
+      button_type: 'new'
+    },
+    {
+      instruction: 'increase',
+      cell: 'A3',
+      target:'A4',
+      button_type: 'old'
+    },
+    {
+      instruction: 'decrease',
+      cell: 'A2',
+      target:'A1',
+      button_type: 'new'
+    },
+    {
+      instruction: 'increase',
+      cell: 'A2',
+      target:'A3',
+      button_type: 'old'
+    },
+    {
+      instruction: 'increase',
+      cell: 'A3',
+      target:'A4',
+      button_type: 'new'
+    },
+    {
+      instruction: 'decrease',
+      cell: 'A3',
       target:'A2',
       button_type: 'new'
     },
@@ -48,41 +96,23 @@ const Task = (props:any) => {
     },
     {
       instruction: 'increase',
-      cell: 'A3',
-      target:'A4',
-      button_type: 'new'
-    },
-    {
-      instruction: 'decrease',
-      cell: 'A4',
-      target:'A3',
-      button_type: 'new'
-    },
-    {
-      instruction: 'increase',
       cell: 'A1',
       target:'A2',
-      button_type: 'old'
-    },
-    {
-      instruction: 'increase',
-      cell: 'A2',
-      target:'A3',
-      button_type: 'old'
-    },
-    {
-      instruction: 'increase',
-      cell: 'A3',
-      target:'A4',
-      button_type: 'old'
+      button_type: 'new'
     },
     {
       instruction: 'decrease',
-      cell: 'A4',
-      target:'A3',
+      cell: 'A2',
+      target:'A1',
+      button_type: 'new'
+    },
+    {
+      instruction: 'decrease',
+      cell: 'A3',
+      target:'A2',
       button_type: 'old'
     }
-  ];
+];
 
     useEffect(() => {
       const interactiveRects = document.querySelectorAll('[data-interactive="true"]')
@@ -175,7 +205,7 @@ const Task = (props:any) => {
     <>
     <div className={styles.instruction}>
       <h1  style={{fontWeight:'normal', fontSize:'1.6rem', position:'relative', top:'10px', color: 'rgb(90, 90, 90)'}}>
-        Task {`${currentTask + 1}`}
+        Task {`${currentTask + 1}`} / 12
       </h1>
       <div className={styles.instructionWrapper}>
         <h1 style={{color:'black', fontWeight:'bold'}}>
