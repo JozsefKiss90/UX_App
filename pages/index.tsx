@@ -28,7 +28,7 @@ export default function Home() {
   const {likertProgress, feedback, email } = useLikertProgressContext()
   const [userEmail, setUserEmail]  = useState('')
   const [isChecked, setIsChecked] = useState(false)
-
+  const [emailSent, setEmailSent] = useState(false)
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
 
@@ -100,7 +100,7 @@ export default function Home() {
       email: userEmail,
       update: isChecked,
     };
-    
+    setEmailSent(true)
     let options = {
       method :'POST',
       headers : {'Content-type' :'application/json'},
@@ -161,11 +161,18 @@ export default function Home() {
         />
 
       </div>
-      <button className={styles.button} onClick={sendUserEmail}>
-        <p>
-          Send
-        </p>
-      </button> 
+        {emailSent ? 
+        <button className={styles.button} style={{backgroundColor:"green"}}>
+          <p>
+           Address sent!
+          </p>
+        </button> 
+       : 
+        <button className={styles.button} onClick={sendUserEmail}>
+          <p>
+            Send
+          </p>
+        </button> }
      </div>
     );
   }

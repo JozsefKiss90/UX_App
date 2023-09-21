@@ -63,15 +63,15 @@ function Experience() {
       3 : {
         question: (
           <div>
-            Have you ever experienced confusion with the decimal increase / decrease button (&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ) in the past?
+            How would you describe your experience with the decimal increase / decrease button (&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )?
             <img
               src="/images/buttons.png"
               alt="Decrease / Increase Button"
-              style={{ width: '90px', height: '90px', position:"relative", top:"33px", right: '450px' }}
+              style={{ width: '90px', height: '90px', position:"relative", top:"35px", right: '315px' }}
             />
           </div>
         ),
-        ranking : ["Never", "Always"]
+        ranking : ["Very confusing", "Seamless"]
       }
   }
 

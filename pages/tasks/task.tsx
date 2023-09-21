@@ -208,10 +208,15 @@ const Task = (props:any) => {
         Task {`${currentTask + 1}`} / 12
       </h1>
       <div className={styles.instructionWrapper}>
+      {progress == 0 ?
         <h1 style={{color:'black', fontWeight:'bold'}}>
-            Make {`${tasksData[currentTask]?.cell}`} (selected) similar to {`${tasksData[currentTask]?.target}`} with one click  
+            &nbsp;
+        </h1> 
+        :
+        <h1 style={{color:'black', fontWeight:'bold'}}>
+          Make {`${tasksData[currentTask]?.cell}`} (selected) similar to {`${tasksData[currentTask]?.target}`} with one click  
         </h1>
-    
+      }
       </div>     
     </div>   
     <div className={styles.svgButtonContainer}>
@@ -229,7 +234,7 @@ const Task = (props:any) => {
         } 
         {progress == 0 && 
             <button className={styles.topButton} onClick={handleProgress}>
-                Understood
+                Proceed
             </button>
         }
          {
