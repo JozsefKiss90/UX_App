@@ -46,7 +46,7 @@ const Instruction = ({ progress, setProgress } : any) => {
           <h2>
             Your task will be to change a number in a selected row using Google Sheets buttons.
           </h2>
-          <button className={styles.centeredButton} onClick={(e) => {
+          <button className={styles.centeredButton_2} onClick={(e) => {
             handleProgress();
           }}>
             See demo

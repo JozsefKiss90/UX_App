@@ -58,7 +58,26 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 20px; /* some space between the text and the button */
+  margin-top: 20px; 
+  
+}
+
+.centeredButton_2 {
+  color: white;
+  background-color: rgb(63, 158, 240);
+  font-size: 2rem;
+  padding: 10px 20px;
+  border: 1px solid rgb(63, 158, 240);
+  border-radius: 30px;
+  cursor: pointer;
+  width: 200px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px; 
+  word-wrap: normal;
 }
 
 .revealButton {  
