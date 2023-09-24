@@ -32,7 +32,7 @@ const Task = (props:any) => {
 
   const tasks = [
     SVG3_new, SVG1_old, SVG4_new, SVG3_old,
-    SVG2_new, SVG2_old, SVG4_new, SVG3_new,
+    SVG2_new, SVG2_old, SVG4_old, SVG3_new,
     SVG2_new, SVG1_new, SVG2_new, SVG3_old
 ];
 
@@ -77,10 +77,10 @@ const Task = (props:any) => {
       button_type: 'old'
     },
     {
-      instruction: 'increase',
-      cell: 'A3',
-      target:'A4',
-      button_type: 'new'
+      instruction: 'decrease',
+      cell: 'A4',
+      target:'A3',
+      button_type: 'old'
     },
     {
       instruction: 'decrease',
