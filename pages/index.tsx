@@ -180,14 +180,14 @@ export default function Home() {
   return (  
     <div>
     {
-      instructionProgress < 4 ? 
+      instructionProgress < 6 ? 
         <Instruction progress={instructionProgress} setProgress={setInstructionProgress} />
-      : instructionProgress == 4 && currentTask < 8 ? 
+      : instructionProgress == 6 && currentTask < 8 ? 
         <Task currentTask={currentTask} setResponse={setResponseData} response={responsData}
          onComplete={handleTaskComplete} setTaskComplete={setTaskComplete}/>
-      : taskComplete && instructionProgress == 4 ? 
+      : taskComplete && instructionProgress == 6 ? 
         <Instruction2 progress={instructionProgress} setProgress={setInstructionProgress}/>
-      : instructionProgress == 5 ? 
+      : instructionProgress == 7 ? 
         <Experience/>
       : null
     }
