@@ -49,7 +49,7 @@ const Instruction = ({ progress, setProgress } : any) => {
           <button className={styles.centeredButton} onClick={(e) => {
             handleProgress();
           }}>
-            Practice
+            See demo
           </button>
         </div>
          : progress == 4 ? 

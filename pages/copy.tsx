@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+/*import { useEffect, useState } from 'react'
 import styles from '../../styles/FirstTask.module.scss'
 import SVG1_new from '../tasks/svg/task_A1_0.svg';
 import SVG2_new from '../tasks/svg/task_A2_1.svg';
@@ -256,3 +256,4 @@ const Task = (props:any) => {
 }
 
 export default Task
+*/
