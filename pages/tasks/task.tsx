@@ -8,9 +8,10 @@ import SVG1_old from '../tasks/svg/task_1_old.svg';
 import SVG2_old from '../tasks/svg/task_2_old.svg';
 import SVG3_old from '../tasks/svg/task_3_old.svg';
 import SVG4_old from '../tasks/svg/task_4_old.svg';
-import SVGBlurred3 from '../tasks/svg/task_3_blur.svg'; 
+import SVGBlurred3 from '../tasks/svg/blurred_no_select_2.svg'; 
 
 type tasksData = {
+  taskId: number;
   instruction: 'increase' | 'decrease';
   cell: string; 
   target: string;
@@ -33,7 +34,7 @@ const Task = (props:any) => {
   const tasks = [
     SVG3_new, SVG1_old, SVG4_new, SVG3_old,
     SVG2_new, SVG2_old, SVG4_old, SVG3_new,
-    SVG2_new, SVG1_new, SVG2_new, SVG3_old
+    SVG2_old, SVG1_new, SVG2_new, SVG3_old
 ];
 
   const SVGBlurred = SVGBlurred3
@@ -41,72 +42,84 @@ const Task = (props:any) => {
 
   const tasksData : tasksData[]= [
     {
+      taskId: 1,
       instruction: 'decrease',
       cell: 'A3',
       target:'A2',
       button_type: 'new'
     },
     {
+      taskId: 2,
       instruction: 'increase',
       cell: 'A1',
       target:'A2',
       button_type: 'old'
     },
     {
+      taskId: 3,
       instruction: 'decrease',
       cell: 'A4',
       target:'A3',
       button_type: 'new'
     },
     {
+      taskId: 4,
       instruction: 'increase',
       cell: 'A3',
       target:'A4',
       button_type: 'old'
     },
     {
+      taskId: 5,
       instruction: 'decrease',
       cell: 'A2',
       target:'A1',
       button_type: 'new'
     },
     {
+      taskId: 6,
       instruction: 'increase',
       cell: 'A2',
       target:'A3',
       button_type: 'old'
     },
     {
+      taskId: 7,
       instruction: 'decrease',
       cell: 'A4',
       target:'A3',
       button_type: 'old'
     },
     {
-      instruction: 'decrease',
-      cell: 'A3',
-      target:'A2',
-      button_type: 'new'
-    },
-    {
+      taskId: 8,
       instruction: 'increase',
-      cell: 'A2',
-      target:'A3',
+      cell: 'A3',
+      target:'A4',
       button_type: 'new'
     },
     {
+      taskId: 9,
+      instruction: 'decrease',
+      cell: 'A2',
+      target:'A1',
+      button_type: 'old'
+    },
+    {
+      taskId: 10,
       instruction: 'increase',
       cell: 'A1',
       target:'A2',
       button_type: 'new'
     },
     {
-      instruction: 'decrease',
+      taskId: 11,
+      instruction: 'increase',
       cell: 'A2',
-      target:'A1',
+      target:'A3',
       button_type: 'new'
     },
     {
+      taskId: 12,
       instruction: 'decrease',
       cell: 'A3',
       target:'A2',
@@ -213,8 +226,9 @@ const Task = (props:any) => {
             &nbsp;
         </h1> 
         :
-        <h1 style={{color:'black', fontWeight:'bold'}}>
-          Make {`${tasksData[currentTask]?.cell}`} (selected) similar to {`${tasksData[currentTask]?.target}`} with one click  
+        <h1 style={{color:'black'}}>
+          Make <span style={{fontWeight:'bold'}}>{`${tasksData[currentTask]?.cell}`}  (selected) </span>
+          similar to <span style={{fontWeight:'bold'}}>{`${tasksData[currentTask]?.target}`}</span> with one click  
         </h1>
       }
       </div>     

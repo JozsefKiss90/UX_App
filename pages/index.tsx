@@ -187,7 +187,7 @@ export default function Home() {
          onComplete={handleTaskComplete} setTaskComplete={setTaskComplete}/>
       : taskComplete && instructionProgress == 6 ? 
         <Instruction2 progress={instructionProgress} setProgress={setInstructionProgress}/>
-      : instructionProgress == 7 ? 
+      : instructionProgress == 12 ? 
         <Experience/>
       : null
     }
