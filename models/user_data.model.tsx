@@ -1,6 +1,7 @@
 import mongoose, { Document, Model, Schema } from 'mongoose';
 
-interface Coordinates {
+interface Response {
+  taskId: number;
   cx: number;
   cy: number;
   response_time: number;
@@ -10,7 +11,7 @@ interface Coordinates {
 
 interface User_data extends Document {
   task: string;
-  coordinates: { [key: string]: Coordinates };
+  response: { [key: string]: Response };
   email: string;
   feedback : string,
   likert: { [key: number]: number }; 
@@ -27,7 +28,7 @@ try {
         type: String,
         required: true,
       },
-      coordinates: {
+      response: {
         type: Schema.Types.Mixed,
         required: true,
       },

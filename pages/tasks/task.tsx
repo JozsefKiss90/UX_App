@@ -32,9 +32,9 @@ const Task = (props:any) => {
   const [circleY, setCircleY] = useState(0);
 
   const tasks = [
-    SVG3_new, SVG1_old, SVG4_new, SVG3_old,
-    SVG2_new, SVG2_old, SVG4_old, SVG3_new,
-    SVG2_old, SVG1_new, SVG2_new, SVG3_old
+    SVG1_old, SVG3_new, SVG4_new, SVG3_old,
+    SVG1_new, SVG2_old, SVG4_old, SVG3_new,
+    SVG2_old, SVG2_new, SVG2_new, SVG3_old
 ];
 
   const SVGBlurred = SVGBlurred3
@@ -43,17 +43,17 @@ const Task = (props:any) => {
   const tasksData : tasksData[]= [
     {
       taskId: 1,
-      instruction: 'decrease',
-      cell: 'A3',
-      target:'A2',
-      button_type: 'new'
-    },
-    {
-      taskId: 2,
       instruction: 'increase',
       cell: 'A1',
       target:'A2',
       button_type: 'old'
+    },
+    {
+      taskId: 2,
+      instruction: 'decrease',
+      cell: 'A3',
+      target:'A2',
+      button_type: 'new'
     },
     {
       taskId: 3,
@@ -71,9 +71,9 @@ const Task = (props:any) => {
     },
     {
       taskId: 5,
-      instruction: 'decrease',
-      cell: 'A2',
-      target:'A1',
+      instruction: 'increase',
+      cell: 'A1',
+      target:'A2',
       button_type: 'new'
     },
     {
@@ -106,10 +106,10 @@ const Task = (props:any) => {
     },
     {
       taskId: 10,
-      instruction: 'increase',
-      cell: 'A1',
-      target:'A2',
-      button_type: 'new'
+      instruction: 'decrease',
+      cell: 'A2',
+      target:'A1',
+      button_type: 'new' 
     },
     {
       taskId: 11,
@@ -165,7 +165,7 @@ const Task = (props:any) => {
     const handleBlur = () => {
       setBlur(!blur)
     }
-
+   
     const handleProgress = () => {
       setProgress(progress + 1)
       if(progress == 1) { 
@@ -192,18 +192,20 @@ const Task = (props:any) => {
           setResponse((prevResponse : any) => ({
             ...prevResponse,
             [currentTask]: {
+              taskId: tasksData[currentTask].taskId,
               cx: svgP.x,
               cy: svgP.y,
               response_time: elapsed,
-              instruction: instruction,
-              button_type: button_type
+              instruction: tasksData[currentTask].instruction,
+              button_type: tasksData[currentTask].button_type
             },
           }))
           setCircleX(svgP.x);
           setCircleY(svgP.y);
         }
+        console.log(foundTargets)
         setFoundTargets(foundTargets + 1)
-          if(foundTargets == 3) {
+          if(foundTargets == 11) {
             setTaskComplete(true)
           }
         setTimeout(() => {
@@ -252,13 +254,13 @@ const Task = (props:any) => {
             </button>
         }
          {
-        progress == 1 ? <button disabled={buttonDisabled} className={styles.revealButton} onClick={(e) => {
+        progress == 1 ? <button disabled={buttonDisabled} className={styles.revealButton} onClick={() => {
           handleBlur(); handleProgress()
         }}> 
           Reveal
         </button> : ''}
         {  
-        progress == 2 ? <button disabled={buttonDisabled} className={styles.revealButtonHidden} onClick={(e) => {
+        progress == 2 ? <button disabled={buttonDisabled} className={styles.revealButtonHidden} onClick={() => {
           handleBlur(); handleProgress()
         }}>  
           Reveal

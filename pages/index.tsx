@@ -49,7 +49,7 @@ export default function Home() {
       setCurrentTask((prevTask) => prevTask + 1);
     }, 1000);  
   }
-
+  console.log(currentTask)
   useEffect(() => {
     if(taskComplete) {
       let data : Data = {
@@ -94,7 +94,7 @@ export default function Home() {
   function handleChecked() {
     setIsChecked(!isChecked)
   }
-  console.log(isChecked)
+
   function sendUserEmail() {
     let data : any = {
       email: userEmail,
@@ -141,10 +141,10 @@ export default function Home() {
           },
           '& .MuiInputLabel-outlined': {
             top: '50%',
-            transform: 'translate(14px, -50%)',  // Center the label vertically in its default state
+            transform: 'translate(14px, -50%)',  
           },
           '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
-            transform: 'translate(14px, -20px) scale(0.75)',  // Adjust for the shrunk label position and size
+            transform: 'translate(14px, -20px) scale(0.75)',  
           },
         }}
       />
@@ -176,18 +176,18 @@ export default function Home() {
      </div>
     );
   }
-  
+
   return (  
     <div>
     {
       instructionProgress < 6 ? 
         <Instruction progress={instructionProgress} setProgress={setInstructionProgress} />
-      : instructionProgress == 6 && currentTask < 8 ? 
+      : instructionProgress == 6 && currentTask < 12 ? 
         <Task currentTask={currentTask} setResponse={setResponseData} response={responsData}
          onComplete={handleTaskComplete} setTaskComplete={setTaskComplete}/>
       : taskComplete && instructionProgress == 6 ? 
         <Instruction2 progress={instructionProgress} setProgress={setInstructionProgress}/>
-      : instructionProgress == 12 ? 
+      : instructionProgress == 7 ? 
         <Experience/>
       : null
     }
