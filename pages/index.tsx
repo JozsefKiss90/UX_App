@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 
 type Data = {
   task: string;
-  coordinates: any;
+  response: any;
   likert: { [key: number]: number };
   email?: string;
   feedback?: string;
@@ -54,7 +54,7 @@ export default function Home() {
     if(taskComplete) {
       let data : Data = {
         task: "Task description",
-        coordinates: responsData,
+        response: responsData,
         likert: likertAnswers
       };
       

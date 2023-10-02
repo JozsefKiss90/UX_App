@@ -21,9 +21,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     else if(req.method === 'POST') {
         if(!req.body) return res.status(404).json({error:'form data is missing'})
         console.log("req body: " + JSON.stringify(req.body))
-        const { task, coordinates, email, feedback, likert} = req.body
+        const { task, response, email, feedback, likert} = req.body
  
-        const userData = new UserData({task, coordinates, email, feedback, likert});
+        const userData = new UserData({task, response, email, feedback, likert});
         userData
         .save()
         .then((data) => {
