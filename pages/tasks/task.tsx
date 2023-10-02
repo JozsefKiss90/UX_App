@@ -34,7 +34,7 @@ const Task = (props:any) => {
   const tasks = [
     SVG1_old, SVG3_new, SVG4_new, SVG3_old,
     SVG1_new, SVG2_old, SVG4_old, SVG3_new,
-    SVG2_old, SVG2_new, SVG2_new, SVG3_old
+    SVG2_old, SVG2_new, SVG3_old, SVG2_new
 ];
 
   const SVGBlurred = SVGBlurred3
@@ -113,17 +113,17 @@ const Task = (props:any) => {
     },
     {
       taskId: 11,
-      instruction: 'increase',
-      cell: 'A2',
-      target:'A3',
-      button_type: 'new'
-    },
-    {
-      taskId: 12,
       instruction: 'decrease',
       cell: 'A3',
       target:'A2',
       button_type: 'old'
+    },
+    {
+      taskId: 12,
+      instruction: 'increase',
+      cell: 'A2',
+      target:'A3',
+      button_type: 'new'
     }
 ];
 
