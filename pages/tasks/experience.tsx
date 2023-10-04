@@ -53,7 +53,7 @@ function Experience() {
                 <img src="/images/sheets.png" alt="Microsoft Excel" style={{ width: '50px', height: '50px' }} />
                 <p>
                   )
-                </p>
+                </p> 
               </div>
             </div>
           </div>
