@@ -1,6 +1,6 @@
 import Instruction from './tasks/instruction'
 import Instruction2 from './tasks/instruction_2';
-import {SetStateAction, useEffect, useState } from 'react'
+import {SetStateAction, useEffect, useMemo, useState } from 'react'
 import Task from './tasks/task'
 import { useCheckboxContext } from '../context/checkboxcontext';
 import Experience from './tasks/experience';
@@ -16,6 +16,29 @@ type Data = {
   feedback?: string;
 };
 
+interface DesignState {
+  variant: string;
+}
+
+async function toggleTaskState(): Promise<DesignState> {
+  const options = {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json' },
+  };
+  
+  try {
+    const response = await fetch('/api/task_state', options);
+    if (!response.ok) {
+      throw new Error('Network response was not ok: ' + response.statusText);
+    }
+    const data: DesignState = await response.json();
+    console.log("Received Data:", data);  // Log the received data
+    return data;
+  } catch (error) {
+    console.error("An error occurred:", error);
+    throw error;
+  }
+}
 
 export default function Home() {
 
@@ -29,6 +52,27 @@ export default function Home() {
   const [userEmail, setUserEmail]  = useState('')
   const [isChecked, setIsChecked] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
+  const [designState, setDesignState] = useState<DesignState | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+
+
+  const calculation = useMemo(() => toggleTaskState(), [designState]);
+  /*useEffect(() => {
+    const fetchDesignState = async () => {
+      try {
+        const data = await toggleTaskState(); // this should now only fetch, not toggle
+        console.log("Design State Data:", data);
+        setDesignState(data);
+      } catch (error) {
+        setError(error as Error);
+      }
+    };
+    
+    // Only fetch design state once on component mount.
+    fetchDesignState();
+}, []);*/
+
+  
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
 
@@ -49,11 +93,11 @@ export default function Home() {
       setCurrentTask((prevTask) => prevTask + 1);
     }, 1000);  
   }
-  console.log(currentTask)
+ 
   useEffect(() => {
-    if(taskComplete) {
+    if(taskComplete && designState) {
       let data : Data = {
-        task: "Task description",
+        task: designState?.variant, 
         response: responsData,
         likert: likertAnswers
       };
@@ -180,12 +224,12 @@ export default function Home() {
   return (  
     <div>
     {
-      instructionProgress < 6 ? 
+      instructionProgress < 9 ? 
         <Instruction progress={instructionProgress} setProgress={setInstructionProgress} />
-      : instructionProgress == 6 && currentTask < 12 ? 
-        <Task currentTask={currentTask} setResponse={setResponseData} response={responsData}
+      : instructionProgress == 9 && currentTask < 12 ? 
+        <Task designState={designState} currentTask={currentTask} setResponse={setResponseData} response={responsData}
          onComplete={handleTaskComplete} setTaskComplete={setTaskComplete}/>
-      : taskComplete && instructionProgress == 6 ? 
+      : taskComplete && instructionProgress == 9 ? 
         <Instruction2 progress={instructionProgress} setProgress={setInstructionProgress}/>
       : instructionProgress == 7 ? 
         <Experience/>

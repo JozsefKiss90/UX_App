@@ -9,6 +9,7 @@ import SVG2_old from '../tasks/svg/task_2_old.svg';
 import SVG3_old from '../tasks/svg/task_3_old.svg';
 import SVG4_old from '../tasks/svg/task_4_old.svg';
 import SVGBlurred3 from '../tasks/svg/blurred_no_select_2.svg'; 
+import Practice from './svg/practice.svg'
 
 type tasksData = {
   taskId: number;
@@ -18,8 +19,12 @@ type tasksData = {
   button_type: 'new' | 'old';
 };
 
+interface DesignState {
+  variant: string;
+}
+
 const Task = (props:any) => {
-  const { onComplete, instruction, button_type, setResponse, currentTask, setTaskComplete } = props
+  const { onComplete, designState, setResponse, currentTask, setTaskComplete } = props
   
   const [blur, setBlur] = useState(true)
   const [progress, setProgress] = useState(0)
@@ -30,6 +35,13 @@ const Task = (props:any) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [circleX, setCircleX] = useState(0);
   const [circleY, setCircleY] = useState(0);
+  const [taskDesing, setTaskDesgin] = useState< tasksData[] | null>(null)
+
+  useEffect(()=>{
+    designState?.variant === 'A' ? setTaskDesgin(oldDesign) : setTaskDesgin(newDesign)
+  },[])
+
+  console.log(taskDesing)
 
   const tasks = [
     SVG1_old, SVG3_new, SVG4_new, SVG3_old,
@@ -39,7 +51,9 @@ const Task = (props:any) => {
 
   const SVGBlurred = SVGBlurred3
   const CurrentSvg : any= tasks[currentTask]
-
+  // egyforma task sorrend mindkét desginban 
+  // A csoport régi design, B csoport új design de csak az első 
+  // 
   const tasksData : tasksData[]= [
     {
       taskId: 1,
@@ -127,6 +141,9 @@ const Task = (props:any) => {
     }
 ];
 
+const oldDesign = tasksData.filter(task=>task.button_type=='old')
+const newDesign = tasksData.filter(task=>task.button_type=='new')
+
     useEffect(() => {
       const interactiveRects = document.querySelectorAll('[data-interactive="true"]')
       if(!blur) {
@@ -189,7 +206,7 @@ const Task = (props:any) => {
           let svgP = pt.matrixTransform(svgElement.getScreenCTM()?.inverse());
           const elapsed = Date.now() - startTime 
           setTargetFound(true)
-          setResponse((prevResponse : any) => ({
+          setResponse((prevResponse : any) => ({ 
             ...prevResponse,
             [currentTask]: {
               taskId: tasksData[currentTask].taskId,
@@ -272,3 +289,27 @@ const Task = (props:any) => {
 }
 
 export default Task
+
+async function toggleTaskState() {
+  let options = {
+    method :'POST',
+    headers : {'Content-type' :'application/json'},
+    body : null,
+  }
+  try {
+    let response = await fetch('/api/task_state', options);
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("An error occurred:", error);
+    throw error;
+  }
+}
+ 
+export async function getServerSideProps({ req } : any){
+
+  let designState = await toggleTaskState();
+  return {
+    props: { designState }
+  }
+} 

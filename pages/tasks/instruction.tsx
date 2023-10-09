@@ -1,11 +1,15 @@
 import styles from '../../styles/FirstTask.module.scss'
 import Practice from './svg/practice.svg'
+import Practice_2 from './svg/practice_2.svg'
+import PracticeBlur from './svg/practice_blur.svg'
+import Practice_3 from './svg/practice_3.svg'
+
 const Instruction = ({ progress, setProgress } : any) => {
 
   const handleProgress = () => {
     setProgress(progress + 1);
   };
-
+  console.log(progress)
   return (
     <div>
       {progress == 0 ?
@@ -54,14 +58,39 @@ const Instruction = ({ progress, setProgress } : any) => {
         </div>
          : progress == 4 ? 
          <div className={styles.instuctionBox_2}>
-           <button className={styles.centeredButton} onClick={(e) => {
+           <button className={styles.revealButton} onClick={(e) => {
              handleProgress();
            }}>
              Next
            </button>
-           <Practice/>
+           <PracticeBlur/> 
          </div>
-        : progress == 5 ? 
+          : progress == 5 ? 
+          <div className={styles.instuctionBox_2}>
+            <button className={styles.pacticeButton} onClick={(e) => {
+              handleProgress();
+            }}>
+              Next
+            </button>
+            <Practice_2/> 
+          </div>
+        : progress == 6 ? 
+        <div className={styles.instuctionBox_2}>
+            <button className={styles.pacticeButton_2} onClick={(e) => {
+              handleProgress();
+            }}>
+              Next
+            </button>
+            <Practice/> 
+          </div>
+        : progress == 7 ? 
+        <div className={styles.instuctionBox_2}  onClick={(e) => {
+          handleProgress();
+        }}>
+            
+            <Practice_3/> 
+          </div>
+        : progress == 8 ? 
         <div className={styles.instuctionBox_2}>
           <h2>
             Answer as fast as you can!
