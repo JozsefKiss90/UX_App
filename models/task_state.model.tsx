@@ -25,7 +25,7 @@ const TaskSchema: Schema<TaskState> = new Schema({
 
 
 let taskModel: Model<TaskState>;
-try {
+try { 
   taskModel = mongoose.model<TaskState>('task_state');
 } catch (error) {
   taskModel = mongoose.model<TaskState>('task_state', TaskSchema);

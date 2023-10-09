@@ -17,7 +17,7 @@ interface User_data extends Document {
   likert: { [key: number]: number };   
 }
 
-const ResponseSchema: Schema<User_data> =  new Schema<User_data>({
+export const ResponseSchema: Schema<User_data> =  new Schema<User_data>({
   task: {
     type: String,
     required: true,
@@ -40,11 +40,13 @@ const ResponseSchema: Schema<User_data> =  new Schema<User_data>({
   },
 }, { collection: 'response_schema' });
 
-let responseModel: Model<User_data>
+
+let ResponseModel: Model<User_data>
 try {
-  responseModel = mongoose.model<User_data>('response_schema');
+  ResponseModel = mongoose.model<User_data>('response_schema');
 } catch (error) {
-  responseModel = mongoose.model<User_data>('response_schema', ResponseSchema);
+  ResponseModel = mongoose.model<User_data>('response_schema', ResponseSchema);
 }
 
-export default ResponseSchema;
+export default ResponseModel;
+

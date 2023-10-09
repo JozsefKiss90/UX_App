@@ -87,7 +87,6 @@ const Instruction = ({ progress, setProgress } : any) => {
         <div className={styles.instuctionBox_2}  onClick={(e) => {
           handleProgress();
         }}>
-            
             <Practice_3/> 
           </div>
         : progress == 8 ? 

@@ -20,25 +20,26 @@ interface DesignState {
   variant: string;
 }
 
-async function toggleTaskState(): Promise<DesignState> {
+async function fetchTaskState(): Promise<DesignState> {
   const options = {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
   };
   
   try {
-    const response = await fetch('/api/task_state', options);
+    const response = await fetch('http://localhost:3000/api/task_state', options);
     if (!response.ok) {
       throw new Error('Network response was not ok: ' + response.statusText);
     }
     const data: DesignState = await response.json();
-    console.log("Received Data:", data);  // Log the received data
+    console.log("Received Data:", data); 
     return data;
   } catch (error) {
     console.error("An error occurred:", error);
     throw error;
   }
 }
+
 
 export default function Home() {
 
@@ -56,7 +57,18 @@ export default function Home() {
   const [error, setError] = useState<Error | null>(null);
 
 
-  const calculation = useMemo(() => toggleTaskState(), [designState]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchTaskState();
+        setDesignState(data);
+      } catch (error) {
+        setError(error as Error);
+      }
+    };
+    fetchData();
+  }, []);
+  
   /*useEffect(() => {
     const fetchDesignState = async () => {
       try {
@@ -116,7 +128,7 @@ export default function Home() {
       }
       console.log(options)
       if (taskComplete && likertProgress === 5) {
-        fetch('/api/user_data', options)
+        fetch('http://localhost:3000/api/user_data', options)
           .then(res => {
             console.log(res.status)
             return res.json()
@@ -150,7 +162,7 @@ export default function Home() {
       headers : {'Content-type' :'application/json'},
       body : JSON.stringify(data),
     }
-    fetch('/api/user_email', options)
+    fetch('http://localhost:3000/api/user_email', options)
     .then(res => res.json())
     .catch(err => console.log(err))
   }

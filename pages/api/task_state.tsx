@@ -4,7 +4,6 @@ import TaskSchema from '../../models/task_state.model'
 import ResponseSchema from '../../models/user_data.model'
 
 const Task = mongoose.models.Task || mongoose.model('Task', TaskSchema);
-const Response = mongoose.models.Data || mongoose.model('Data', ResponseSchema);
 
 const toggleVariant = async () => {
   try {
