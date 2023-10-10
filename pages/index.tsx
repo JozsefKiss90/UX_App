@@ -20,6 +20,8 @@ interface DesignState {
   variant: string;
 }
 
+const url = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_URL_REMOTE : process.env.NEXT_PUBLIC_URL
+
 async function fetchTaskState(): Promise<DesignState> {
   const options = {
     method: 'POST',
@@ -27,7 +29,7 @@ async function fetchTaskState(): Promise<DesignState> {
   };
   
   try {
-    const response = await fetch('http://localhost:3000/api/task_state', options);
+    const response = await fetch(`${url}/api/task_state`, options);
     if (!response.ok) {
       throw new Error('Network response was not ok: ' + response.statusText);
     }
@@ -39,7 +41,6 @@ async function fetchTaskState(): Promise<DesignState> {
     throw error;
   }
 }
-
 
 export default function Home() {
 
@@ -55,7 +56,6 @@ export default function Home() {
   const [emailSent, setEmailSent] = useState(false)
   const [designState, setDesignState] = useState<DesignState | null>(null);
   const [error, setError] = useState<Error | null>(null);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -128,7 +128,7 @@ export default function Home() {
       }
       console.log(options)
       if (taskComplete && likertProgress === 5) {
-        fetch('http://localhost:3000/api/user_data', options)
+        fetch(`${url}/api/user_data`, options)
           .then(res => {
             console.log(res.status)
             return res.json()
@@ -162,12 +162,14 @@ export default function Home() {
       headers : {'Content-type' :'application/json'},
       body : JSON.stringify(data),
     }
-    fetch('http://localhost:3000/api/user_email', options)
+    fetch(`${url}/api/user_email`, options)
     .then(res => res.json())
     .catch(err => console.log(err))
   }
 
-
+  console.log(instructionProgress)
+  console.log(currentTask)
+  
   if(isMobile) {
     return (
      <div className={styles.mobileTextContainer}>
@@ -243,7 +245,7 @@ export default function Home() {
          onComplete={handleTaskComplete} setTaskComplete={setTaskComplete}/>
       : taskComplete && instructionProgress == 9 ? 
         <Instruction2 progress={instructionProgress} setProgress={setInstructionProgress}/>
-      : instructionProgress == 7 ? 
+      : instructionProgress == 10 ? 
         <Experience/>
       : null
     }

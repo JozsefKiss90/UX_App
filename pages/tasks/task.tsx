@@ -9,7 +9,7 @@ import SVG2_old from '../tasks/svg/task_2_old.svg';
 import SVG3_old from '../tasks/svg/task_3_old.svg';
 import SVG4_old from '../tasks/svg/task_4_old.svg';
 import SVGBlurred3 from '../tasks/svg/blurred_no_select_2.svg'; 
-import Practice from './svg/practice.svg'
+import {tasksData} from '../../data/data'
 
 type tasksData = {
   taskId: number;
@@ -19,9 +19,6 @@ type tasksData = {
   button_type: 'new' | 'old';
 };
 
-interface DesignState {
-  variant: string;
-}
 
 const Task = (props:any) => {
   const { onComplete, designState, setResponse, currentTask, setTaskComplete } = props
@@ -35,32 +32,23 @@ const Task = (props:any) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [circleX, setCircleX] = useState(0);
   const [circleY, setCircleY] = useState(0);
-  const [taskDesing, setTaskDesgin] = useState< tasksData[] | null>(null)
-
-  useEffect(()=>{
-    designState?.variant === 'A' ? setTaskDesgin(oldDesign) : setTaskDesgin(newDesign)
-  },[])
-
-  console.log(taskDesing)
 
   const tasks = [
-    SVG1_old, SVG3_new, SVG4_new, SVG3_old,
-    SVG1_new, SVG2_old, SVG4_old, SVG3_new,
+    designState?.variant === 'A' ? SVG1_old : SVG1_new, SVG3_new, SVG4_new, SVG3_old,
+    designState?.variant === 'A' ? SVG1_new : SVG1_old, SVG2_old, SVG4_old, SVG3_new,
     SVG2_old, SVG2_new, SVG3_old, SVG2_new
 ];
 
   const SVGBlurred = SVGBlurred3
   const CurrentSvg : any= tasks[currentTask]
-  // egyforma task sorrend mindkét desginban 
-  // A csoport régi design, B csoport új design de csak az első 
-  // 
+
   const tasksData : tasksData[]= [
     {
       taskId: 1,
       instruction: 'increase',
       cell: 'A1',
       target:'A2',
-      button_type: 'old'
+      button_type: designState?.variant === 'A' ? 'old' : 'new'
     },
     {
       taskId: 2,
@@ -88,7 +76,7 @@ const Task = (props:any) => {
       instruction: 'increase',
       cell: 'A1',
       target:'A2',
-      button_type: 'new'
+      button_type: designState?.variant === 'A' ? 'new' : 'old'
     },
     {
       taskId: 6,
@@ -140,9 +128,6 @@ const Task = (props:any) => {
       button_type: 'new'
     }
 ];
-
-const oldDesign = tasksData.filter(task=>task.button_type=='old')
-const newDesign = tasksData.filter(task=>task.button_type=='new')
 
     useEffect(() => {
       const interactiveRects = document.querySelectorAll('[data-interactive="true"]')

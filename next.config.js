@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  env: {
+    BASE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -9,6 +11,8 @@ const nextConfig = {
     });
     return config;
   },
+  swcMinify: true,
 }
 
-module.exports = nextConfig;
+module.exports = nextConfig
+

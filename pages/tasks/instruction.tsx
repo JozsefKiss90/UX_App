@@ -87,7 +87,9 @@ const Instruction = ({ progress, setProgress } : any) => {
         <div className={styles.instuctionBox_2}  onClick={(e) => {
           handleProgress();
         }}>
+            <div style={{cursor:'pointer'}}>
             <Practice_3/> 
+            </div>
           </div>
         : progress == 8 ? 
         <div className={styles.instuctionBox_2}>
@@ -106,4 +108,4 @@ const Instruction = ({ progress, setProgress } : any) => {
   );
 }; 
 
-export default Instruction;
+export default Instruction; 

@@ -28,7 +28,7 @@
     "**/*.tsx",
     "pages/**/*",
     "pages/tasks/firstTask.tsx",
-    "pages/tasks/mySvg.js"
+    "pages/tasks/mySvg.js",
   ],
   "exclude": [
     "node_modules"
