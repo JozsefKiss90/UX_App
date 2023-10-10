@@ -108,9 +108,9 @@ const Task = (props:any) => {
     },
     {
       taskId: 10,
-      instruction: 'decrease',
+      instruction: 'increase',
       cell: 'A2',
-      target:'A1',
+      target:'A3',
       button_type: 'new' 
     },
     {
@@ -122,9 +122,9 @@ const Task = (props:any) => {
     },
     {
       taskId: 12,
-      instruction: 'increase',
+      instruction: 'decrease',
       cell: 'A2',
-      target:'A3',
+      target:'A1',
       button_type: 'new'
     }
 ];
