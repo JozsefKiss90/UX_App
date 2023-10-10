@@ -239,14 +239,14 @@ const Task = (props:any) => {
         </div>     
       </div> 
         {showFeedback ?    
-          <>   
-            <CurrentSvg/> 
+        <div style={{position: 'relative', cursor: 'pointer'}}>
+        <CurrentSvg/> 
             <svg className={styles.overlaySvg} width="1185" height="433" viewBox="0 0 1185 433" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx={circleX + 1} cy={circleY} r="16.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
               <circle cx={circleX + 1} cy={circleY} r="10.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
               <circle cx={circleX + 1} cy={circleY} r="4.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
             </svg>
-          </> 
+          </div> 
         : blur ? <SVGBlurred /> : <CurrentSvg />
         } 
         {progress == 0 && 

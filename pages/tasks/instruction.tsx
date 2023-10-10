@@ -6,7 +6,7 @@ import Practice_3 from './svg/practice_3.svg'
 import { useEffect, useState } from 'react'
 
 const Instruction = ({ progress, setProgress } : any) => {
-
+  setProgress(8)
   const handleProgress = () => {
     setProgress(progress + 1);
   };
@@ -108,7 +108,7 @@ const Instruction = ({ progress, setProgress } : any) => {
           </div>
         : 
         progress === 7 ? (
-<div style={{position: 'relative', cursor: 'pointer'}}>
+        <div style={{position: 'relative', cursor: 'pointer'}}>
             <Practice_3 onClick={(e:any) => {
               handlePracticeClick(e);
             }} />
