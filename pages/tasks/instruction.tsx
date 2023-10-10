@@ -3,13 +3,36 @@ import Practice from './svg/practice.svg'
 import Practice_2 from './svg/practice_2.svg'
 import PracticeBlur from './svg/practice_blur.svg'
 import Practice_3 from './svg/practice_3.svg'
+import { useEffect, useState } from 'react'
 
 const Instruction = ({ progress, setProgress } : any) => {
 
   const handleProgress = () => {
     setProgress(progress + 1);
   };
-  console.log(progress)
+  
+  const [showFeedbackPractice, setShowFeedbackPractice] = useState(false);
+  const [circleXPractice, setCircleXPractice] = useState(0); 
+  const [circleYPractice, setCircleYPractice] = useState(0); 
+
+  const handlePracticeClick = (e:any) => {
+   
+    setShowFeedbackPractice(true);
+    const svgElement = document.querySelector('svg') as SVGSVGElement | null;
+    if (svgElement) {
+      let pt = svgElement.createSVGPoint()
+      pt.x = e.clientX 
+      pt.y = e.clientY
+      let svgP = pt.matrixTransform(svgElement.getScreenCTM()?.inverse());
+      setCircleXPractice(svgP.x);
+      setCircleYPractice(svgP.y);
+    }
+    setTimeout(() => {
+      setShowFeedbackPractice(false);
+      handleProgress();
+    }, 2000);
+  };
+
   return (
     <div>
       {progress == 0 ?
@@ -53,7 +76,7 @@ const Instruction = ({ progress, setProgress } : any) => {
           <button className={styles.centeredButton_2} onClick={(e) => {
             handleProgress();
           }}>
-            See demo
+            Practice
           </button>
         </div>
          : progress == 4 ? 
@@ -67,10 +90,10 @@ const Instruction = ({ progress, setProgress } : any) => {
          </div>
           : progress == 5 ? 
           <div className={styles.instuctionBox_2}>
-            <button className={styles.pacticeButton} onClick={(e) => {
+            <button className={styles.revealButton} onClick={(e) => {
               handleProgress();
             }}>
-              Next
+              Reveal
             </button>
             <Practice_2/> 
           </div>
@@ -83,26 +106,28 @@ const Instruction = ({ progress, setProgress } : any) => {
             </button>
             <Practice/> 
           </div>
-        : progress == 7 ? 
-        <div className={styles.instuctionBox_2}  onClick={(e) => {
-          handleProgress();
-        }}>
-            <div style={{cursor:'pointer'}}>
-            <Practice_3/> 
-            </div>
+        : 
+        progress === 7 ? (
+<div style={{position: 'relative', cursor: 'pointer'}}>
+            <Practice_3 onClick={(e:any) => {
+              handlePracticeClick(e);
+            }} />
+            {showFeedbackPractice && (
+              <svg className={styles.overlaySvg} width="1405" height="720" viewBox="0 0 1405 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx={circleXPractice + 1} cy={circleYPractice} r="16.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
+                <circle cx={circleXPractice + 1} cy={circleYPractice} r="10.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
+                <circle cx={circleXPractice + 1} cy={circleYPractice} r="4.5" fill="#F20000" fill-opacity="0.21" stroke="#9F0909"/>
+              </svg>
+            )}
           </div>
-        : progress == 8 ? 
-        <div className={styles.instuctionBox_2}>
-          <h2>
-            Answer as fast as you can!
-          </h2>
-          <button className={styles.centeredButton} onClick={(e) => {
-            handleProgress();
-          }}>
-            Start
-          </button>
-        </div>
-        : ''
+        ) : progress === 8 ? (
+          <div className={styles.instuctionBox_2}>
+            <h2>Answer as fast as you can!</h2>
+            <button className={styles.centeredButton} onClick={handleProgress}>
+              Start
+            </button>
+          </div>
+        ) : ""
       }
     </div>
   );

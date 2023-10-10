@@ -236,7 +236,7 @@ export default function Home() {
   }
 
   return (  
-    <div>
+    <div className={styles.mainContainer}>
     {
       instructionProgress < 9 ? 
         <Instruction progress={instructionProgress} setProgress={setInstructionProgress} />

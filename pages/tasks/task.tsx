@@ -220,25 +220,24 @@ const Task = (props:any) => {
 
   return (
     <>
-    <div className={styles.instruction}>
-      <h1  style={{fontWeight:'normal', fontSize:'1.6rem', position:'relative', top:'10px', color: 'rgb(90, 90, 90)'}}>
-        Task {`${currentTask + 1}`} / 12
-      </h1>
-      <div className={styles.instructionWrapper}>
-      {progress == 0 ?
-        <h1 style={{color:'black', fontWeight:'bold'}}>
-            &nbsp;
-        </h1> 
-        :
-        <h1 style={{color:'black'}}>
-          Make <span style={{fontWeight:'bold'}}>{`${tasksData[currentTask]?.cell}`}  (selected) </span>
-          similar to <span style={{fontWeight:'bold'}}>{`${tasksData[currentTask]?.target}`}</span> with one click  
-        </h1>
-      }
-      </div>     
-    </div>   
     <div className={styles.svgButtonContainer}>
-        <div className={styles.svgWrapper}>
+      <div className={styles.instruction}>
+        <h1  style={{fontWeight:'normal', fontSize:'1.6rem', position:'relative', top:'10px', color: 'rgb(90, 90, 90)'}}>
+          Task {`${currentTask + 1}`} / 12
+        </h1>
+        <div className={styles.instructionWrapper}>
+        {progress == 0 ?
+          <h1 style={{color:'black', fontWeight:'bold'}}>
+              &nbsp;
+          </h1> 
+          :
+          <h1 style={{color:'black'}}>
+            Make <span style={{fontWeight:'bold'}}>{`${tasksData[currentTask]?.cell}`}  (selected) </span>
+            similar to <span style={{fontWeight:'bold'}}>{`${tasksData[currentTask]?.target}`}</span> with one click  
+          </h1>
+        }
+        </div>     
+      </div> 
         {showFeedback ?    
           <>   
             <CurrentSvg/> 
@@ -267,7 +266,6 @@ const Task = (props:any) => {
         }}>  
           Reveal
         </button> : ''}
-        </div>
       </div>
     </>
   )
