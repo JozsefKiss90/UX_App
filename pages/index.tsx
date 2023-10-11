@@ -19,7 +19,7 @@ type Data = {
 interface DesignState {
   variant: string;
 }
-
+ 
 const url = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_URL_REMOTE : process.env.NEXT_PUBLIC_URL
 
 async function fetchTaskState(): Promise<DesignState> {
