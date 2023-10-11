@@ -84,7 +84,7 @@ export default function Home() {
     fetchDesignState();
 }, []);*/
 
-  
+  console.log(url)
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
 
