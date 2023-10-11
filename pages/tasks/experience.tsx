@@ -25,11 +25,6 @@ function Experience() {
           <p style={{ margin: 0 }}>
             Please indicate your level of experience<br />with Google Sheets
           </p>
-          <img 
-            src="/images/sheets.png" 
-            alt="Google Sheets" 
-            style={{ width: '50px', height: '50px', marginLeft: '10px' }} 
-          />
         </div>
       ),
       ranking: ["Never used", <>I use it almost <br /> every day</>]
@@ -42,10 +37,6 @@ function Experience() {
           </p>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <p>in spreadsheet apps&nbsp;</p>
-            <img src="/images/excel.png" alt="Microsoft Excel" style={{ width: '50px', height: '50px', marginRight: '5px' }} />
-            <p>or&nbsp;</p>
-            <img src="/images/sheets.png" alt="Google Sheets" style={{ width: '50px', height: '50px', marginRight: '5px' }} />
-            <p>)</p>
           </div>
         </div>
       ),
@@ -55,13 +46,8 @@ function Experience() {
       question: (
         <div style={{ position: 'relative', textAlign: 'center' }}>
           <p style={{ display: 'inline-block', margin: 0 }}>
-            How would you describe your experience with the decimal increase / decrease button?
+            How would you describe your experience <br /> with the decimal increase / decrease button?
           </p>
-          <img 
-            src="/images/buttons.png"
-            alt="Decrease / Increase Button"
-            style={{ width: '90px', height: '90px', position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-          />
         </div>
       ),
       ranking: ["Very confusing", "Seamless"]
