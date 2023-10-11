@@ -27,7 +27,7 @@ async function fetchTaskState(): Promise<DesignState> {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
   };
-  
+   
   try {
     const response = await fetch(`${url}/api/task_state`, options);
     if (!response.ok) {
