@@ -11,5 +11,5 @@ const connectToDb = (dbURI) => {
 async function main() { 
     connectToDb(mongoURI); 
 } 
-
+ 
 export default main

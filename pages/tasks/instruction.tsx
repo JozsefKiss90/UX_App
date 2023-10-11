@@ -6,7 +6,7 @@ import Practice_3 from './svg/practice_3.svg'
 import { useEffect, useState } from 'react'
 
 const Instruction = ({ progress, setProgress } : any) => {
-
+  setProgress(8)
   const handleProgress = () => {
     setProgress(progress + 1);
   };

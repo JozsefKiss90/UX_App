@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import connectToDb from '../../database/database'
 import TaskSchema from '../../models/task_state.model'
-import ResponseSchema from '../../models/user_data.model'
 
 const Task = mongoose.models.Task || mongoose.model('Task', TaskSchema);
 
