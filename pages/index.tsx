@@ -238,14 +238,14 @@ export default function Home() {
   return (  
     <div className={styles.mainContainer}>
     {
-      instructionProgress < 9 ? 
+      instructionProgress < 10 ? 
         <Instruction progress={instructionProgress} setProgress={setInstructionProgress} />
-      : instructionProgress == 9 && currentTask < 12 ? 
+      : instructionProgress == 10 && currentTask < 12 ? 
         <Task designState={designState} currentTask={currentTask} setResponse={setResponseData} response={responsData}
          onComplete={handleTaskComplete} setTaskComplete={setTaskComplete}/>
-      : taskComplete && instructionProgress == 9 ? 
+      : taskComplete && instructionProgress == 10 ? 
         <Instruction2 progress={instructionProgress} setProgress={setInstructionProgress}/>
-      : instructionProgress == 10 ? 
+      : instructionProgress == 11 ? 
         <Experience/>
       : null
     }

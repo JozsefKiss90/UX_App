@@ -122,7 +122,17 @@ const Instruction = ({ progress, setProgress } : any) => {
           </div>
         ) : progress === 8 ? (
           <div className={styles.instuctionBox_2}>
-            <h2>Answer as fast as you can!</h2>
+            <h2>Good job, practice finished.</h2>
+            <button className={styles.centeredButton} onClick={handleProgress}>
+              Next
+            </button>
+          </div>
+        ): progress === 9 ? (
+          <div className={styles.instuctionBox_2}>
+            <h2>
+              Now starts the real challenge. <br/>
+              <b>Answer as fast as you can!</b>
+            </h2>
             <button className={styles.centeredButton} onClick={handleProgress}>
               Start
             </button>
