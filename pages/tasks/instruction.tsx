@@ -34,7 +34,7 @@ const Instruction = ({ progress, setProgress } : any) => {
   };
 
   return (
-    <div>
+    <>
       {progress == 0 ?
         <div className={styles.instuctionBox}>
           <h2>
@@ -80,7 +80,7 @@ const Instruction = ({ progress, setProgress } : any) => {
           </button>
         </div>
          : progress == 4 ? 
-         <div className={styles.instuctionBox_2}>
+         <div style={{position: 'relative', cursor: 'pointer'}}>
            <button className={styles.revealButton} onClick={(e) => {
              handleProgress();
            }}>
@@ -89,7 +89,7 @@ const Instruction = ({ progress, setProgress } : any) => {
            <PracticeBlur/> 
          </div>
           : progress == 5 ? 
-          <div className={styles.instuctionBox_2}>
+          <div style={{position: 'relative', cursor: 'pointer'}}>
             <button className={styles.revealButton} onClick={(e) => {
               handleProgress();
             }}>
@@ -98,8 +98,8 @@ const Instruction = ({ progress, setProgress } : any) => {
             <Practice_2/> 
           </div>
         : progress == 6 ? 
-        <div className={styles.instuctionBox_2}>
-            <button className={styles.pacticeButton_2} onClick={(e) => {
+        <div style={{position: 'relative', cursor: 'pointer'}}>
+            <button className={styles.revealButton} onClick={(e) => {
               handleProgress();
             }}>
               Next
@@ -129,7 +129,7 @@ const Instruction = ({ progress, setProgress } : any) => {
           </div>
         ) : ""
       }
-    </div>
+    </>
   );
 }; 
 

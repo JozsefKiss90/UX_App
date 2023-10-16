@@ -116,7 +116,7 @@
     position: absolute;
     display: flex;
     justify-content: center;
-    left: 100px;
+    left: 200px;
     top: 500px;
     width: 205px;
     height: 104px;
@@ -224,7 +224,7 @@
     width: 290px;
     height: 94px;
     align-items: flex-start;
-
+    overflow: visible;
   }
   ._1 {
     color: #c7c7c7;

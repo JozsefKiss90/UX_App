@@ -92,7 +92,7 @@ function Likert({likertText}: LikertProps) {
 
   return (
     <>
-       <div className={`${resets.storybrainResets} ${classes.root}`}>
+    <div className={`${resets.storybrainResets} ${classes.root}`}>
       {likertProgress < 4 ? 
       <div>
         <div className={classes.pleaseIndicateYourLevelOfExper}>
