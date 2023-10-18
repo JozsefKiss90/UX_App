@@ -129,7 +129,7 @@ const Instruction = ({ progress, setProgress } : any) => {
           </div>
         ): progress === 9 ? (
           <div className={styles.instuctionBox_2}>
-            <h2>
+            <h2 style={{fontWeight:'400'}}>
               Now starts the real challenge. <br/>
               <b>Answer as fast as you can!</b>
             </h2>
